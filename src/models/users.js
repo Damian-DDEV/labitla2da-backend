@@ -21,9 +21,7 @@ module.exports = (sequelize, DataTypes) => {
         notEmpty: {
             msg: "The username field cannot be empty."
         },
-        notNull: {
-            msg: "The username field cannot be null."
-        },
+        allowNull: false,
         isAlpha: {
             msg: "The username field cannot contain special characters."
         }
@@ -47,9 +45,7 @@ module.exports = (sequelize, DataTypes) => {
         notEmpty: {
             msg: "The firstname field cannot be empty."
         },
-        notNull: {
-            msg: "The firstname field cannot be null."
-        },
+        allowNull: false,
         isAlpha: {
             msg: "The username field cannot contain special characters."
         }
@@ -61,9 +57,7 @@ module.exports = (sequelize, DataTypes) => {
         notEmpty: {
             msg: "The lastname field cannot be empty."
         },
-        notNull: {
-            msg: "The lastname field cannot be null."
-        },
+        allowNull: false,
         isAlpha: {
             msg: "The username field cannot contain special characters."
         }
@@ -75,9 +69,7 @@ module.exports = (sequelize, DataTypes) => {
         notEmpty: {
             msg: "The lastname field cannot be empty."
         },
-        notNull: {
-            msg: "The lastname field cannot be null."
-        },
+        allowNull: false,
         isAlpha: {
             msg: "The username field cannot contain special characters."
         }
@@ -91,9 +83,7 @@ module.exports = (sequelize, DataTypes) => {
         notEmpty: {
             msg: "The email field cannot be empty."
         },
-        notNull: {
-            msg: "The email field cannot be null."
-        },
+        allowNull: false,
         isAlpha: {
             msg: "The username field cannot contain special characters."
         }
@@ -106,9 +96,7 @@ module.exports = (sequelize, DataTypes) => {
         notEmpty: {
             msg: "The dni/id field cannot be empty."
         },
-        notNull: {
-            msg: "The dni/id field cannot be null."
-        },
+        allowNull: false,
         isAlpha: {
             msg: "The dni/id field cannot contain special characters"
         }
