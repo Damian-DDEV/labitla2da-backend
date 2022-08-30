@@ -16,14 +16,14 @@ module.exports = (sequelize, DataTypes) => {
   Users.init({
     username: {
       type: DataTypes.STRING,
-      unique: "The username is already in use",
+/*       unique: {
+        msg:"The username is already in use"
+      }, */
+      allowNull: false,
+      isAlpha: false,
       validate: {
         notEmpty: {
             msg: "The username field cannot be empty."
-        },
-        allowNull: false,
-        isAlpha: {
-            msg: "The username field cannot contain special characters."
         }
       }
     },
@@ -33,72 +33,56 @@ module.exports = (sequelize, DataTypes) => {
         notEmpty: {
             msg: "The rol field cannot be empty.."
         },
-        isAlpha: {
-            msg: "The rol field cannot contain special characters."
-        }
       }
     },
 
     firstname: {
       type: DataTypes.STRING,
+      allowNull: false,
       validate: {
         notEmpty: {
             msg: "The firstname field cannot be empty."
-        },
-        allowNull: false,
-        isAlpha: {
-            msg: "The username field cannot contain special characters."
         }
       }
     },
     lastname: {
       type: DataTypes.STRING,
+      allowNull: false,
       validate: {
         notEmpty: {
             msg: "The lastname field cannot be empty."
-        },
-        allowNull: false,
-        isAlpha: {
-            msg: "The username field cannot contain special characters."
         }
       }
     },
     password:  {
       type: DataTypes.STRING,
+      allowNull: false,
       validate: {
         notEmpty: {
             msg: "The lastname field cannot be empty."
         },
-        allowNull: false,
-        isAlpha: {
-            msg: "The username field cannot contain special characters."
-        }
       }
     },
     email: {
       type: DataTypes.STRING,
-      unique: "The email is already in use",
+      allowNull: false,
+      unique: {
+        msg: "The email is already in use"
+      },
       validate: {
         isEmail: true,
         notEmpty: {
-            msg: "The email field cannot be empty."
+          msg: "The email field cannot be empty."
         },
-        allowNull: false,
-        isAlpha: {
-            msg: "The username field cannot contain special characters."
-        }
       }
     },
     dni:  {
       type: DataTypes.STRING,
       unique: "The dni/id is already in use",
+      allowNull: false,
       validate: {
         notEmpty: {
             msg: "The dni/id field cannot be empty."
-        },
-        allowNull: false,
-        isAlpha: {
-            msg: "The dni/id field cannot contain special characters"
         }
       }
     }

@@ -5,25 +5,25 @@ Model.Users.addScope("list", {
 });
 
 const UsersRepository = {
-  async getUsers() {
+  getUsers: async () => {
     return await Model.Users.scope("list").findAll();
   },
 
-  async getUser(id) {
+  getUser: async (id) => {
     return await Model.Users.scope("list").findOne({ where: { id } });
   },
 
-  async editUser(id, user) {
+  editUser: async (id, user) => {
     //TODO: SI ES UNDEFINED LA BUSQUEDA... DEVUELVE ALGO?
     let getUsr = await Model.Users.findOne(id);
     if (getUsr) return await Model.Users.update(user, { where: id });
   },
 
-  async delUser(id) {
+  delUser: async (id) => {
     return await Model.Users.destroy({ where: id });
   },
 
-  async login(usernPass) {
+  login: async (usernPass) => {
     const { username } = usernPass;
     let getUsr = await Model.Users.scope("list").findOne({
       where: {
@@ -42,11 +42,11 @@ const UsersRepository = {
     return await getUsr;
   },
 
-  async register(user) {
+  register: async (user) => {
     return await Model.Users.scope("list").create(user);
   },
 
-  async refresh(user) {
+  refresh: async (user) => {
     return await Model.Users.scope("list").findOne({ where: { id: user } });
   },
 };

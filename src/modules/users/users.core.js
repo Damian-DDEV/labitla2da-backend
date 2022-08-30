@@ -4,28 +4,28 @@ const jwt = require("jsonwebtoken");
 const AuthJWT = require("../../config/jwt");
 
 const userCore = {
-  async getUsers() {
+  getUsers: async () => {
     const users = await UsersRepository.getUsers();
     return users;
   },
 
-  async getUser(id) {
+  getUser: async (id) => {
     const user = await UsersRepository.getUser(id);
     return user;
   },
 
-  async editUser(id, user) {
+  editUser: async (id, user) => {
     user.password = bcrypt.hashSync(user.password, 10);
     const edituser = await UsersRepository.editUser(id, user);
     return edituser;
   },
 
-  async delUser(id) {
+  delUser: async (id) =>  {
     const deluser = await UsersRepository.delUser(id);
     return deluser;
   },
 
-  async login(usernPass) {
+  login: async (usernPass) => {
     const userLogin = await UsersRepository.login(usernPass);
     let userToJson = userLogin.toJSON();
 
@@ -55,14 +55,14 @@ const userCore = {
     }
   },
 
-  async register(user) {
+  register: async (user) => {
     //Hasheo la clave utilizando bcrypt, para esto utilizo la funcion hashSync, enviandole la pass y la cantidad de "Rounds"
     user.password = bcrypt.hashSync(user.password, 10);
     const newuser = await UsersRepository.register(user);
     return newuser;
   },
 
-  async refresh(token) {
+  refresh: async (token) => {
     //TODO: FALTA HANDLING DE INVALID TOKEN
     let verifyToken = jwt.verify(token, AuthJWT.refresh);
     let { id_user } = verifyToken;
