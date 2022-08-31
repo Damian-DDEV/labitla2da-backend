@@ -66,6 +66,7 @@ const usersController = {
       return res
         .status(201)
         .send({ msg: `User ${user.username} was successfully created` });
+
     } catch (error) {
       return next(error);
     }

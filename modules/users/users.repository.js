@@ -39,16 +39,21 @@ const UsersRepository = {
         "password",
       ],
     });
-    return await getUsr;
+    return getUsr;
   },
 
   register: async (user) => {
-    return await Model.Users.scope("list").create(user);
+    try {
+      console.log(user)
+      return await Model.Users.scope("list").create(user);
+    } catch (error) {
+      console.log(error)
+    }    
   },
 
   refresh: async (user) => {
     return await Model.Users.scope("list").findOne({ where: { id: user } });
-  },
+  }
 };
 
 module.exports = UsersRepository;

@@ -1,7 +1,6 @@
+require("./database/index");
 const express = require("express");
 const cors = require("cors");
-require("./src/database/index");
-require("dotenv").config();
 const routes = require("./routes");
 const http = require("http");
 

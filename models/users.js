@@ -3,6 +3,7 @@ const {
   Model
 } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
+
   class Users extends Model {
     /**
      * Helper method for defining associations.
@@ -14,11 +15,14 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Users.init({
+    id: {
+      type: DataTypes.INTEGER,
+      primaryKey: true,
+      autoIncrement: true
+    },
     username: {
       type: DataTypes.STRING,
-/*       unique: {
-        msg:"The username is already in use"
-      }, */
+       unique:true,
       allowNull: false,
       isAlpha: false,
       validate: {
@@ -85,10 +89,26 @@ module.exports = (sequelize, DataTypes) => {
             msg: "The dni/id field cannot be empty."
         }
       }
+    },
+    createdAt: {
+      field: 'created_at',
+      type: DataTypes.DATE,
+    },
+    updatedAt: {
+      field: 'updated_at',
+      type: DataTypes.DATE,
+    },
+    deleteAt: {
+      field: 'delete_at',
+      type: DataTypes.DATE,
+      paranoid: true
     }
-  }, {
+  },
+
+  {
     sequelize,
     modelName: 'Users',
-  });
+  },
+  );
   return Users;
 };

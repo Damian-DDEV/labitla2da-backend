@@ -30,10 +30,6 @@ const userCore = {
     let userToJson = userLogin.toJSON();
 
     if (userToJson) {
-      /*             usernPass.password = bcrypt.hashSync(usernPass.password, 10);
-            console.log(usernPass);
-            console.log(userToJson.password) */
-
       //Comparamos la password que viene desde la petición con la que devuelve la base de datos, si esto da true tenemos un login exitoso.
       let PassMatch = bcrypt.compareSync(
         usernPass.password,
