@@ -90,25 +90,14 @@ module.exports = (sequelize, DataTypes) => {
             msg: "The dni/id field cannot be empty."
         }
       }
-    },
-    createdAt: {
-      field: 'created_at',
-      type: DataTypes.DATE,
-    },
-    updatedAt: {
-      field: 'updated_at',
-      type: DataTypes.DATE,
-    },
-    deleteAt: {
-      field: 'delete_at',
-      type: DataTypes.DATE,
-      paranoid: true
     }
   },
 
   {
     sequelize,
     modelName: 'Users',
+    paranoid: true,
+    deletedAt: 'deleteAt'
   },
   );
   return Users;

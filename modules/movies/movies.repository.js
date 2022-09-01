@@ -6,7 +6,7 @@ const moviesRepository = {
     return movies;
   },
 
-  getMovie: async ({id}) => {
+  getMovie: async (id) => {
     let movie = await Model.Movies.findOne(id);
     return movie;
   },
@@ -17,12 +17,12 @@ const moviesRepository = {
   },
 
   editMovie: async (movie, id) => {
-    let movieEdited = await Model.Movie.findOne(id);
-    if (movieEdited) return Model.Movie.update(movie, { where: id });
+    let movieEdited = await Model.Movies.findOne(id);
+    if (movieEdited) return Model.Movies.update(movie, { where: id });
   },
 
-  delMovie: async () => {
-    let delMovie = await Model.Movies.delMovie();
+  delMovie: async (id) => {
+    let delMovie = await Model.Movies.destroy({where: id});
     return delMovie;
   },
 };

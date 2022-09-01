@@ -8,23 +8,23 @@ const genresCore = {
         return genres;
     },
 
-    getGenre: async () => {
-        let genre = await genresRepository.getGenre();
+    getGenre: async (id) => {
+        let genre = await genresRepository.getGenre(id);
         return genre;
     },
 
-    createGenre: async () => {
-        let genreCreated = await genresRepository.createGenre();
+    createGenre: async (genre) => {
+        let genreCreated = await genresRepository.createGenre(genre);
         return genreCreated;
     },
 
-    editGenre: async () => {
-        let genreEdited = await genresRepository.editGenre();
+    editGenre: async (genre, id) => {
+        let genreEdited = await genresRepository.editGenre(genre, id);
         return genreEdited;
     },
 
-    delGenre: async () => {
-        let delGenre = await genresRepository.delGenre();
+    delGenre: async (id) => {
+        let delGenre = await genresRepository.delGenre(id);
         return delGenre;
     }
 }

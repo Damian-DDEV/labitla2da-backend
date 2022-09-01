@@ -8,22 +8,22 @@ const ticketsCore = {
         return tickets;
     },
 
-    getTicket: async () => {
-        let ticket = await ticketsRepository.getTicket();
+    getTicket: async (id) => {
+        let ticket = await ticketsRepository.getTicket(id);
         return ticket;
     },
-    createTicket: async () => {
-        let ticketCreated = await ticketsRepository.createTicket();
+    createTicket: async (ticket) => {
+        let ticketCreated = await ticketsRepository.createTicket(ticket);
         return ticketCreated;
     },
 
-    editTicket: async () => {
-        let ticketEdited = await ticketsRepository.editTicket();
+    editTicket: async (ticket, id) => {
+        let ticketEdited = await ticketsRepository.editTicket(ticket, id);
         return ticketEdited;
     },
 
-    delTicket: async () => {
-        let delTicket = await ticketsRepository.delTicket();
+    delTicket: async (id) => {
+        let delTicket = await ticketsRepository.delTicket(id);
         return delTicket;
     }
 }

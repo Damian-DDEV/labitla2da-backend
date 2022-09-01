@@ -11,18 +11,18 @@ const contactRepository = {
     return contact;
   },
 
-  createMovie: async () => {
-    let movieCreated = await Model.Contact.create();
-    return movieCreated;
+  createContact: async (contact) => {
+    let contactCreated = await Model.Contact.create(contact);
+    return contactCreated;
   },
 
-  editCotnact: async (id, contact) => {
-    let editContact = await Model.Contact.editMovie();
-    return editMovie;
+  editContact: async (contact, id) => {
+    let contactEdited = await Model.Contact.findOne(id);
+    if (contactEdited) return Model.Contact.update(contact, { where: id });
   },
 
   delContact: async (id) => {
-    let delContact = await Model.Contact.delMovie();
+    let delContact = await Model.Contact.destroy({where: id});
     return delContact;
   },
 };

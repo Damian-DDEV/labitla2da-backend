@@ -6,23 +6,28 @@ const genresRepository = {
     return genres;
   },
 
-  getGenre: async () => {
-    let genre = await Model.Genres.getMovie();
+  getGenre: async (id) => {
+    let genre = await Model.Genres.findOne(id);
     return genre;
   },
 
-  createGenre: async () => {
-    let genreCreated = await Model.Genres.create();
-    return genreCreated;
+  createGenre: async (genre) => {
+    try {
+      let genreCreated = await Model.Genres.create(genre);
+      return genreCreated;
+      
+    } catch (error) {
+      console.log(error)
+    }
   },
 
-  editGenre: async () => {
-    let genreEdited = await Model.Genres.editMovie();
-    return genreEdited;
+  editGenre: async (genre, id) => {
+    let genreEdited = await Model.Genres.findOne(id);
+    if (genreEdited) return Model.Genres.update(genre, { where: id });
   },
 
-  delGenre: async () => {
-    let delGenre = await Model.Genres.delMovie();
+  delGenre: async (id) => {
+    let delGenre = await Model.Genres.destroy({where: id});
     return delGenre;
   },
 };

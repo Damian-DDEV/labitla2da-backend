@@ -30,17 +30,20 @@ let contactController = {
   },
 
   editContact: async (req, res, next) => {
+    let contact = req.body;
+    let id = req.params;
     try {
-      let editContact = await contactCore.editContact();
-      return res.status(200).send(editContact);
+      await contactCore.editContact(contact,id);
+      return res.status(200).send(`The contact was successfully modified`);
     } catch (error) {
       return next(error);
     }
   },
 
   delContact: async (req, res, next) => {
+    let id = req.params;
     try {
-      let delContact = await contactCore.delContact();
+      let delContact = await contactCore.delContact(id);
       return res.status(200).send(delContact);
     } catch (error) {
       return next(error);

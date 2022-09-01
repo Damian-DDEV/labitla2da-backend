@@ -13,7 +13,7 @@ let moviesController = {
   getMovie: async (req, res, next) => {
     let id = req.body.id || req.params.id;
     try {
-      let getMovie = await moviesCore.getMovie(id);
+      let getMovie = await moviesCore.getMovie({id});
       return res.status(200).send(getMovie);
     } catch (error) {
       return next(error);
@@ -32,17 +32,17 @@ let moviesController = {
 
   editMovie: async (req, res, next) => {
     let movie = req.body;
-    let id = req.params.id;
+    let id = req.params;
     try {
-      let editedMovie = await moviesCore.editMovie(movie, id);
-      return res.status(200).send(editedMovie);
+      await moviesCore.editMovie(movie, id);
+      return res.status(200).send(`The ${movie.name} movie was successfully modified`);
     } catch (error) {
       return next(error);
     }
   },
 
   delMovie: async (req, res, next) => {
-    let id = req.body.id || req.params.id;
+    let id = req.params.id;
     try {
       let delMovie = await moviesCore.delMovie(id);
       return res.status(200).send(delMovie);

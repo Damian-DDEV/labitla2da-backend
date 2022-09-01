@@ -6,23 +6,23 @@ const ticketsRepository = {
     return tickets;
   },
 
-  getTicket: async () => {
-    let ticket = await Model.Tickets.getMovie();
+  getTicket: async (id) => {
+    let ticket = await Model.Tickets.findOne(id);
     return ticket;
   },
 
-  createTicket: async () => {
-    let ticketCreated = await Model.Tickets.create();
+  createTicket: async (ticket) => {
+    let ticketCreated = await Model.Tickets.create(ticket);
     return ticketCreated;
   },
 
-  editTicket: async () => {
-    let ticketEdited = await Model.Tickets.editMovie();
-    return ticketEdited;
+  editTicket: async (ticket, id) => {
+    let ticketEdited = await Model.Tickets.findOne(id);
+    if (ticketEdited) return Model.Tickets.update(ticket, { where: id });
   },
 
-  delTicket: async () => {
-    let delTicket = await Model.Tickets.delTicket();
+  delTicket: async (id) => {
+    let delTicket = await Model.Tickets.destroy({where:id});
     return delTicket;
   },
 };

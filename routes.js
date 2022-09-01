@@ -14,8 +14,8 @@ router.use('/movies', moviesRouter);
 router.use('/contact', contactRouter);
 router.use('/directors', directorRouter);
 router.use('/genres', genreRouter);
-router.use('/ticket', ticketRouter);
-router.use('/theater', theaters)
+router.use('/tickets', ticketRouter);
+router.use('/theater', theaters);
 
 
 module.exports = router; 

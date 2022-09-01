@@ -43,16 +43,11 @@ const UsersRepository = {
   },
 
   register: async (user) => {
-    try {
-      console.log(user)
-      return await Model.Users.scope("list").create(user);
-    } catch (error) {
-      console.log(error)
-    }    
+    return Model.Users.scope("list").create(user);
   },
 
   refresh: async (user) => {
-    return await Model.Users.scope("list").findOne({ where: { id: user } });
+    return Model.Users.scope("list").findOne({ where: { id: user } });
   }
 };
 

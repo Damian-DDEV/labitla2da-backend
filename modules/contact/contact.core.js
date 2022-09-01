@@ -12,18 +12,18 @@ const contactCore = {
         let contact = await contactRepository.getContact();
         return contact;
     },
-    createContact: async () => {
-        let createContact = await contactRepository.createContact();
-        return movieCreated;
+    createContact: async (contact) => {
+        let contactCreated = await contactRepository.createContact(contact);
+        return contactCreated;
     },
 
-    editContact: async (contact) => {
-        let contactEdited = await contactRepository.editMovie(contact);
+    editContact: async (contact, id) => {
+        let contactEdited = await contactRepository.editContact(contact,id);
         return contactEdited;
     },
 
-    delContact: async () => {
-        let delContact = await contactRepository.delContact();
+    delContact: async (id) => {
+        let delContact = await contactRepository.delContact(id);
         return delContact;
     }
 }
