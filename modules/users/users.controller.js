@@ -11,7 +11,6 @@ const usersController = {
   },
 
   getUser: async (req, res, next) => {
-    //TODO: SACAR LOS CAMPOS COMO PASS
     let id = req.body.id || req.params.id;
     try {
       let getUser = await userCore.getUser(id);

@@ -1,7 +1,7 @@
 const Model = require("../../models");
 
 Model.Users.addScope("list", {
-  attributes: ["id", "firstname", "lastname", "email", "dni", "rol"],
+  attributes: ["id", "firstname", "username" ,"lastname", "email", "dni", "rol"],
 });
 
 const UsersRepository = {

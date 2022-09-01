@@ -8,77 +8,78 @@ module.exports = {
         id: {
           type: Sequelize.INTEGER,
           primaryKey: true,
-          autoIncrement: true,
+          autoIncrement: true
         },
         username: {
           type: Sequelize.STRING,
-          unique: true,
+           unique:true,
           allowNull: false,
           isAlpha: false,
           validate: {
             notEmpty: {
-              msg: "The username field cannot be empty.",
-            },
-          },
+                msg: "The username field cannot be empty."
+            }
+          }
         },
-        rol: {
+        rol:  {
           type: Sequelize.INTEGER,
           validate: {
             notEmpty: {
-              msg: "The rol field cannot be empty..",
+                msg: "The rol field cannot be empty.."
             },
-          },
+          }
         },
-
+    
         firstname: {
           type: Sequelize.STRING,
           allowNull: false,
           validate: {
             notEmpty: {
-              msg: "The firstname field cannot be empty.",
-            },
-          },
+                msg: "The firstname field cannot be empty."
+            }
+          }
         },
+        
         lastname: {
           type: Sequelize.STRING,
           allowNull: false,
           validate: {
             notEmpty: {
-              msg: "The lastname field cannot be empty.",
-            },
-          },
+                msg: "The lastname field cannot be empty."
+            }
+          }
         },
-        password: {
+        password:  {
           type: Sequelize.STRING,
           allowNull: false,
           validate: {
             notEmpty: {
-              msg: "The lastname field cannot be empty.",
+                msg: "The lastname field cannot be empty."
             },
-          },
+          }
         },
         email: {
           type: Sequelize.STRING,
           allowNull: false,
           unique: {
-            msg: "The email is already in use",
+            msg: "The email is already in use"
           },
           validate: {
             isEmail: true,
             notEmpty: {
-              msg: "The email field cannot be empty.",
+              msg: "The email field cannot be empty."
             },
-          },
+          }
         },
-        dni: {
+        dni:  {
           type: Sequelize.STRING,
           unique: "The dni/id is already in use",
           allowNull: false,
           validate: {
             notEmpty: {
-              msg: "The dni/id field cannot be empty.",
-            },
-          },
+                msg: "The dni/id field cannot be empty."
+            }
+          }
         },
         createdAt: {
           field: 'created_at',
@@ -93,7 +94,6 @@ module.exports = {
           type: Sequelize.DATE,
           paranoid: true
         }
-        
       }
     );
   },
