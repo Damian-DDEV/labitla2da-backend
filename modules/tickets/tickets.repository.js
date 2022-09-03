@@ -7,7 +7,7 @@ const ticketsRepository = {
   },
 
   getTicket: async (id) => {
-    let ticket = await Model.Tickets.findOne(id);
+    let ticket = await Model.Tickets.findOne({ where: { id } });
     return ticket;
   },
 
@@ -18,12 +18,11 @@ const ticketsRepository = {
 
   editTicket: async (ticket, id) => {
     let ticketEdited = await Model.Tickets.findOne(id);
-    if (ticketEdited) return Model.Tickets.update(ticket, {where: {id:id}});
+    if (ticketEdited) return Model.Tickets.update(ticket, { where: { id } });
   },
 
   delTicket: async (id) => {
-    console.log(id)
-    let delTicket = await Model.Tickets.destroy({where: id});
+    let delTicket = await Model.Tickets.destroy({ where: { id } });
     return delTicket;
   },
 };

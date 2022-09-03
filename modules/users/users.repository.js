@@ -10,17 +10,17 @@ const UsersRepository = {
   },
 
   getUser: async (id) => {
-    return await Model.Users.scope("list").findOne({ where: id });
+    return await Model.Users.scope("list").findOne({ where: { id } });
   },
 
   editUser: async (id, user) => {
     //TODO: SI ES UNDEFINED LA BUSQUEDA... DEVUELVE ALGO?
     let getUsr = await Model.Users.findOne(id);
-    if (getUsr) return await Model.Users.update(user, { where: id });
+    if (getUsr) return await Model.Users.update(user, { where: { id } });
   },
 
   delUser: async (id) => {
-    return Model.Users.destroy({ where: id});
+    return Model.Users.destroy({ where: { id } });
   },
 
   login: async (usernPass) => {

@@ -13,7 +13,7 @@ let moviesController = {
   getMovie: async (req, res, next) => {
     let id = req.body.id || req.params.id;
     try {
-      let getMovie = await moviesCore.getMovie({id});
+      let getMovie = await moviesCore.getMovie(id);
       return res.status(200).send(getMovie);
     } catch (error) {
       return next(error);

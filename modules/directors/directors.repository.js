@@ -18,11 +18,11 @@ const directorsRepository = {
 
   editDirector: async (director, id) => {
     let directorEdited = await Model.Directors.findOne(id);
-    if (directorEdited) return Model.Directors.update(director, { where: id });
+    if (directorEdited) return Model.Directors.update(director, { where: { id } });
   },
 
   delDirector: async (id) => {
-      let delDirector = await Model.Directors.destroy({where: id});
+      let delDirector = await Model.Directors.destroy({ where: { id } });
       return delDirector;
   },
 };

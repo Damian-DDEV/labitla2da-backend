@@ -7,7 +7,7 @@ const showsRepository = {
   },
 
   getShow: async (id) => {
-    let director = await Model.Shows.findOne({ where: id });
+    let director = await Model.Shows.findOne({ where: { id } });
     return director;
   },
 
@@ -18,11 +18,11 @@ const showsRepository = {
 
   editShow: async (show, id) => {
     let showEdited = await Model.Shows.findOne(id);
-    if (showEdited) return Model.Shows.update(show, { where: id});
+    if (showEdited) return Model.Shows.update(show, { where: { id } });
   },
 
   delShow: async (id) => {
-      let delShow = await Model.Shows.destroy({where: id});
+      let delShow = await Model.Shows.destroy({ where: { id } });
       return delShow;
   },
 };

@@ -7,7 +7,7 @@ const genresRepository = {
   },
 
   getGenre: async (id) => {
-    let genre = await Model.Genres.findOne(id);
+    let genre = await Model.Genres.findOne({ where: { id } });
     return genre;
   },
 
@@ -23,11 +23,11 @@ const genresRepository = {
 
   editGenre: async (genre, id) => {
     let genreEdited = await Model.Genres.findOne(id);
-    if (genreEdited) return Model.Genres.update(genre, { where: id });
+    if (genreEdited) return Model.Genres.update(genre, { where: { id } });
   },
 
   delGenre: async (id) => {
-    let delGenre = await Model.Genres.destroy({where: id});
+    let delGenre = await Model.Genres.destroy({ where: { id } });
     return delGenre;
   },
 };

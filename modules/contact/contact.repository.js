@@ -18,11 +18,11 @@ const contactRepository = {
 
   editContact: async (contact, id) => {
     let contactEdited = await Model.Contact.findOne(id);
-    if (contactEdited) return Model.Contact.update(contact, { where: id });
+    if (contactEdited) return Model.Contact.update(contact, { where: { id } });
   },
 
   delContact: async (id) => {
-    let delContact = await Model.Contact.destroy({where: id});
+    let delContact = await Model.Contact.destroy({ where: { id } });
     return delContact;
   },
 };

@@ -7,7 +7,7 @@ const theatersRepository = {
   },
 
   getTheater: async (id) => {
-    let theater = await Model.Theaters.findOne({where: id});
+    let theater = await Model.Theaters.findOne({ where: { id } });
     return theater;
   },
 
@@ -18,11 +18,11 @@ const theatersRepository = {
 
   editTheater: async (theater, id) => {
     let getTheater = await Model.Theaters.findOne(id);
-    if (getTheater) return await Model.Theaters.update(theater, { where: id });
+    if (getTheater) return await Model.Theaters.update(theater, { where: { id } });
   },
 
   delTheater: async (id) => {
-    let delTheater = await Model.Theaters.destroy({ where: id });
+    let delTheater = await Model.Theaters.destroy({ where: { id } });
     return delTheater;
   },
 };
