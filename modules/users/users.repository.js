@@ -10,7 +10,7 @@ const UsersRepository = {
   },
 
   getUser: async (id) => {
-    return await Model.Users.scope("list").findOne({ where: { id } });
+    return await Model.Users.scope("list").findOne({ where: id });
   },
 
   editUser: async (id, user) => {
@@ -20,7 +20,7 @@ const UsersRepository = {
   },
 
   delUser: async (id) => {
-    return await Model.Users.destroy({ where: id });
+    return Model.Users.destroy({ where: id});
   },
 
   login: async (usernPass) => {

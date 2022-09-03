@@ -18,11 +18,12 @@ const ticketsRepository = {
 
   editTicket: async (ticket, id) => {
     let ticketEdited = await Model.Tickets.findOne(id);
-    if (ticketEdited) return Model.Tickets.update(ticket, { where: id });
+    if (ticketEdited) return Model.Tickets.update(ticket, {where: {id:id}});
   },
 
   delTicket: async (id) => {
-    let delTicket = await Model.Tickets.destroy({where:id});
+    console.log(id)
+    let delTicket = await Model.Tickets.destroy({where: id});
     return delTicket;
   },
 };

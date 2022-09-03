@@ -8,22 +8,22 @@ const theatersCore = {
         return theaters;
     },
 
-    getTheater: async () => {
-        let theater = await theatersRepository.getTheater();
+    getTheater: async (id) => {
+        let theater = await theatersRepository.getTheater(id);
         return theater;
     },
-    createTheater: async () => {
-        let theaterCreated = await theatersRepository.createTheater();
+    createTheater: async (theater) => {
+        let theaterCreated = await theatersRepository.createTheater(theater);
         return theaterCreated;
     },
 
-    editTheater: async () => {
-        let theaterEdited = await theatersRepository.editTheater();
+    editTheater: async (theater, id) => {
+        let theaterEdited = await theatersRepository.editTheater(theater, id);
         return theaterEdited;
     },
 
-    delTheater: async () => {
-        let delTheater = await theatersRepository.delTheater();
+    delTheater: async (id) => {
+        let delTheater = await theatersRepository.delTheater(id);
         return delTheater;
     }
 }

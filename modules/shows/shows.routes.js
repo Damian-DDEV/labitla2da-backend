@@ -1,12 +1,12 @@
 const express = require('express');
 const router = express.Router();
 
-const directorsController = require('./directors.controller');
-router.get('/', directorsController.getDirectors);
-router.get('/:id', directorsController.getDirector);
-router.post('/', directorsController.createDirector);
-router.put('/:id', directorsController.editDirector);
-router.delete('/:id', directorsController.delDirector);
+const showsController = require('./shows.controller');
+router.get('/', showsController.getShows);
+router.get('/:id', showsController.getShow);
+router.post('/', showsController.createShow);
+router.put('/:id', showsController.editShow);
+router.delete('/:id', showsController.delShow);
 
 
 module.exports = router;

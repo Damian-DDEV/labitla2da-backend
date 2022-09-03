@@ -1,31 +1,31 @@
-const directorsRepository = require('./directors.repository');
+const showsRepository = require('./shows.repository');
 
 
-const directorsCore = {
+const showsCore = {
 
-    getDirectors: async () => {
-        let directors = directorsRepository.getDirectors();
-        return directors;
+    getShows: async () => {
+        let shows = showsRepository.getShows();
+        return shows;
     },
 
-    getDirector: async () => {
-        let director = await directorsRepository.getDirector();
-        return director;
+    getShow: async () => {
+        let show = await showsRepository.getShow();
+        return show;
     },
-    createDirector: async (director) => {
-        let directorCreated = await directorsRepository.createDirector(director);
-        return directorCreated;
-    },
-
-    editDirector: async (director, id) => {
-        let directorCreated = await directorsRepository.editDirector(director, id);
-        return directorCreated;
+    createShow: async (show) => {
+        let showCreated = await showsRepository.createShow(show);
+        return showCreated;
     },
 
-    delDirector: async (id) => {
-        let delDirector = await directorsRepository.delDirector(id);
-        return delDirector;
+    editShow: async (show, id) => {
+        let showEdited = await showsRepository.editShow(show, id);
+        return showEdited;
+    },
+
+    delShow: async (id) => {
+        let delShow = await showsRepository.delShow(id);
+        return delShow;
     }
 }
 
-module.exports = directorsCore;
+module.exports = showsCore;

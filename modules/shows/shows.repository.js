@@ -1,30 +1,30 @@
-const Model = require("../../models/");
+const Model = require("../../models");
 
-const directorsRepository = {
-  getDirectors: async () => {
-    let directors = Model.Directors.findAll();
-    return directors;
+const showsRepository = {
+  getShows: async () => {
+    let shows = Model.Shows.findAll();
+    return shows;
   },
 
-  getDirector: async (id) => {
-    let director = await Model.Directors.findOne({ where: { id } });
+  getShow: async (id) => {
+    let director = await Model.Shows.findOne({ where: id });
     return director;
   },
 
-  createDirector: async (director) => {
-    let directorCreated = await Model.Directors.create(director);
+  createShow: async (director) => {
+    let directorCreated = await Model.Shows.create(director);
     return directorCreated;
   },
 
-  editDirector: async (director, id) => {
-    let directorEdited = await Model.Directors.findOne(id);
-    if (directorEdited) return Model.Directors.update(director, { where: id });
+  editShow: async (show, id) => {
+    let showEdited = await Model.Shows.findOne(id);
+    if (showEdited) return Model.Shows.update(show, { where: id});
   },
 
-  delDirector: async (id) => {
-      let delDirector = await Model.Directors.destroy({where: id});
-      return delDirector;
+  delShow: async (id) => {
+      let delShow = await Model.Shows.destroy({where: id});
+      return delShow;
   },
 };
 
-module.exports = directorsRepository;
+module.exports = showsRepository;

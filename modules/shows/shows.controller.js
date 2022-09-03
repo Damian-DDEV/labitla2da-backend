@@ -1,50 +1,51 @@
-const directorsCore = require("./directors.core");
+const directorsCore = require("./shows.core");
 
 let directorsController = {
-  getDirectors: async (req, res, next) => {
+  getShows: async (req, res, next) => {
     try {
-      let getDirectors = await directorsCore.getDirectors();
-      return res.status(200).send(getDirectors);
+      let getShows = await directorsCore.getShows();
+      return res.status(200).send(getShows);
     } catch (error) {
       return next(error);
     }
   },
 
-  getDirector: async (req, res, next) => {
+  getShow: async (req, res, next) => {
     try {
-      let getDirector = await directorsCore.getDirector();
-      return res.status(200).send(getDirector);
+      let getShow = await directorsCore.getShow();
+      return res.status(200).send(getShow);
     } catch (error) {
       return next(error);
     }
   },
 
-  createDirector: async (req,res,next) => {
-    let director = req.body;
+  createShow: async (req,res,next) => {
+    let show = req.body;
     try {
-        let directorCreated = await directorsCore.createDirector(director);
-        return res.status(201).send(directorCreated);
+        let showCreated = await directorsCore.createShow(show);
+        return res.status(201).send(showCreated);
     } catch (error) {
         return next(error);
     }
   },
 
-  editDirector: async (req, res, next) => {
-    let director = req.body;
+  editShow: async (req, res, next) => {
+    let show = req.body;
     let id = req.params;
     try {
-      let editDirector = await directorsCore.editDirector(director, id);
-      return res.status(200).send(editDirector);
+      await directorsCore.editShow(show, id);
+      return res.status(200).send(`The show has been successfully modified`);;
     } catch (error) {
       return next(error);
     }
   },
 
-  delDirector: async (req, res, next) => {
+  delShow: async (req, res, next) => {
     let id = req.params;
     try {
-      let delDirector = await directorsCore.delDirector(id);
-      return res.status(200).send(delDirector);
+      let delShow = await directorsCore.delShow(id);
+      console.log(delShow)
+      return res.status(200).send(delShow);
     } catch (error) {
       return next(error);
     }

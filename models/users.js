@@ -22,7 +22,7 @@ module.exports = (sequelize, DataTypes) => {
     },
     username: {
       type: DataTypes.STRING,
-       unique:true,
+      unique:true,
       allowNull: false,
       isAlpha: false,
       validate: {
@@ -61,12 +61,12 @@ module.exports = (sequelize, DataTypes) => {
     },
     password:  {
       type: DataTypes.STRING,
-      allowNull: false,
+/*       allowNull: false,
       validate: {
         notEmpty: {
-            msg: "The lastname field cannot be empty."
+            msg: "The password field cannot be empty."
         },
-      }
+      } */
     },
     email: {
       type: DataTypes.STRING,

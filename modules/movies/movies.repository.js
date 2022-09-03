@@ -18,11 +18,17 @@ const moviesRepository = {
 
   editMovie: async (movie, id) => {
     let movieEdited = await Model.Movies.findOne(id);
-    if (movieEdited) return Model.Movies.update(movie, { where: id });
+    if (movieEdited) return Model.Movies.update(movie, { 
+      where:{
+        id:id
+      }});
   },
 
   delMovie: async (id) => {
-    let delMovie = await Model.Movies.destroy({where: id});
+    let delMovie = await Model.Movies.destroy({
+      where:{
+        id:id
+      }});
     return delMovie;
   },
 };

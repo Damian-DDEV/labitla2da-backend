@@ -23,7 +23,7 @@ module.exports = {
         type: Sequelize.INTEGER,
         validate: {
           notEmpty: {
-            msg: "The rol field cannot be empty..",
+            msg: "The rol field cannot be empty.",
           },
         },
       },
@@ -48,13 +48,7 @@ module.exports = {
         },
       },
       password: {
-        type: Sequelize.STRING,
-        allowNull: false,
-        validate: {
-          notEmpty: {
-            msg: "The lastname field cannot be empty.",
-          },
-        },
+        type: Sequelize.STRING
       },
       email: {
         type: Sequelize.STRING,
