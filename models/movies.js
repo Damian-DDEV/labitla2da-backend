@@ -55,13 +55,7 @@ module.exports = (sequelize, DataTypes) => {
         },
       },
       path_img: {
-        type: DataTypes.STRING,
-        allowNull: false,
-        validate: {
-          notEmpty: {
-            msg: "The path_img field cannot be empty.",
-          },
-        },
+        type: DataTypes.STRING
       },
       format_movie: {
         type: DataTypes.STRING,

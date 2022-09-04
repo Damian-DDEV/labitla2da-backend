@@ -22,8 +22,10 @@ let moviesController = {
 
   createMovie: async (req, res, next) => {
     let movie = req.body;
+    let img = req.file;
+
     try {
-      let movieCreated = await moviesCore.createMovie(movie);
+      let movieCreated = await moviesCore.createMovie(movie, img);
       return res.status(201).send(movieCreated);
     } catch (error) {
       return next(error);

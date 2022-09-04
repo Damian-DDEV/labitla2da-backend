@@ -15,8 +15,8 @@ const UsersRepository = {
 
   editUser: async (id, user) => {
     //TODO: SI ES UNDEFINED LA BUSQUEDA... DEVUELVE ALGO?
-    let getUsr = await Model.Users.findOne(id);
-    if (getUsr) return await Model.Users.update(user, { where: { id } });
+    let getUsr = await Model.Users.findOne({ where: { id } });
+    if (getUsr) return Model.Users.update(user, { where: { id } });
   },
 
   delUser: async (id) => {
