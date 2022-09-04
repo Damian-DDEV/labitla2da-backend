@@ -1,6 +1,6 @@
 const moviesRepository = require("./movies.repository");
 const fs = require('fs');
-const enviroment = '127.0.0.1:3000/'
+const enviroment = 'http://127.0.0.1:3000/'
 
 const moviesCore = {
   getMovies: async () => {
@@ -8,13 +8,14 @@ const moviesCore = {
     // Recorro las imagenes para setearle el path segun corresponda el enviroment
     // TODO: Ver como tomar el ip de cada enviromente con el process.env
     movies.forEach(movie => {
-      movie.path_img = enviroment + movie.path_img
+      movie.path_img = enviroment + movie.path_img;
     });
     return movies;
   },
 
   getMovie: async (id) => {
     let movie = await moviesRepository.getMovie(id);
+    movie.path_img = enviroment + movie.path_img;
     return movie;
   },
 
