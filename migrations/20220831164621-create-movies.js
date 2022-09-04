@@ -43,6 +43,15 @@ module.exports = {
           },
         },
       },
+      id_director: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        validate: {
+          notEmpty: {
+            msg: "The id_director field cannot be empty.",
+          },
+        },
+      },
       path_img: {
         type: Sequelize.STRING
       },

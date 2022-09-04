@@ -37,8 +37,9 @@ let moviesController = {
   editMovie: async (req, res, next) => {
     let movie = req.body;
     let id = req.params;
+    let img = req.file;
     try {
-      await moviesCore.editMovie(movie, id);
+      await moviesCore.editMovie(movie, id, img);
       return res.status(200).send(`The ${movie.name} movie was successfully modified`);
     } catch (error) {
       return next(error);

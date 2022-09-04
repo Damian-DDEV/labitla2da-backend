@@ -2,18 +2,28 @@ const Model = require("../../models/");
 
 const moviesRepository = {
   getMovies: async () => {
-    let movies = await Model.Movies.findAll();
-    return movies;
+      let movies = await Model.Movies.findAll({
+        include: ["genre", "director"]
+      });
+      return movies;
   },
 
   getMovie: async (id) => {
-    let movie = await Model.Movies.findOne({ where: { id } });
+    let movie = await Model.Movies.findOne({ 
+      where: { id },
+      include: ["genre", "director"]
+    });
     return movie;
   },
 
   createMovie: async (movie) => {
-    let movieCreated = await Model.Movies.create(movie);
-    return movieCreated;
+    try {
+      let movieCreated = await Model.Movies.create(movie);
+      return movieCreated;
+    } catch (error) {
+      console.log(error);
+    }
+
   },
 
   editMovie: async (movie, id) => {
