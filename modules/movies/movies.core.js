@@ -31,12 +31,11 @@ const moviesCore = {
   },
 
   editMovie: async (movie, id, img) => {
+    
     if(img){
       fs.renameSync(img.path, img.path+'.'+img.mimetype.split('/')[1]);
-      //Enviamos la ruta a la db para cuando haga el get.
       movie.path_img = img.destination.split('/')[1]+'/'+img.filename+'.'+img.mimetype.split('/')[1]
     }
-    movie.path_img = enviroment + movie.path_img;
     let editMovie = await moviesRepository.editMovie(movie, id, img);
     return editMovie;
   },

@@ -7,7 +7,7 @@ const upload = multer({dest:'public/images'});
 router.get('/', moviesController.getMovies);
 router.get('/:id', moviesController.getMovie);
 router.post('/', upload.single('myImage'), moviesController.createMovie);
-router.put('/:id', moviesController.editMovie);
+router.put('/:id', upload.single('myImage') ,moviesController.editMovie);
 router.delete('/:id', moviesController.delMovie);
 
 

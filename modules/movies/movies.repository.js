@@ -17,18 +17,14 @@ const moviesRepository = {
   },
 
   createMovie: async (movie) => {
-    try {
       let movieCreated = await Model.Movies.create(movie);
       return movieCreated;
-    } catch (error) {
-      console.log(error);
-    }
-
   },
 
-  editMovie: async (movie, id) => {
+  editMovie: async (movie, id, img) => {
     let movieEdited = await Model.Movies.findOne(id);
-    if (movieEdited) return Model.Movies.update(movie, { where: { id } });
+    if (movieEdited) return Model.Movies.update(movie, { where: id });
+    
   },
 
   delMovie: async (id) => {

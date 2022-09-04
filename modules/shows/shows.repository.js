@@ -7,13 +7,13 @@ const showsRepository = {
   },
 
   getShow: async (id) => {
-    let director = await Model.Shows.findOne({ where: { id } });
-    return director;
+    let show = await Model.Shows.findOne({ where: { id } });
+    return show;
   },
 
-  createShow: async (director) => {
-    let directorCreated = await Model.Shows.create(director);
-    return directorCreated;
+  createShow: async (show) => {
+    let showCreated = await Model.Shows.create(show);
+    return showCreated;
   },
 
   editShow: async (show, id) => {

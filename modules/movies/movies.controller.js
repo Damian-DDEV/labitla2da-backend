@@ -39,8 +39,9 @@ let moviesController = {
     let id = req.params;
     let img = req.file;
     try {
-      await moviesCore.editMovie(movie, id, img);
-      return res.status(200).send(`The ${movie.name} movie was successfully modified`);
+      let movieEdited = await moviesCore.editMovie(movie, id, img);
+      if (movieEdited) return res.status(200).send(`The ${movie.name} movie was successfully modified`);
+      else return res.status(404).send(`Movie not found`);
     } catch (error) {
       return next(error);
     }
