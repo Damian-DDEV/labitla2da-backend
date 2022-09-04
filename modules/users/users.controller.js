@@ -4,7 +4,8 @@ const usersController = {
   getUsers: async (req, res, next) => {
     try {
       let getUsers = await userCore.getUsers();
-      return res.status(200).send(getUsers);
+      if (getUsers) return res.status(200).send(getUsers);
+      else return res.status(404).send(`No users found`);
     } catch (error) {
       return next(error);
     }
@@ -14,7 +15,30 @@ const usersController = {
     let id = req.body.id || req.params.id;
     try {
       let getUser = await userCore.getUser(id);
-      return res.status(200).send(getUser);
+      if (getUser) return res.status(200).send(getUser);
+      else return res.status(404).send(`The user does not exist`);
+    } catch (error) {
+      return next(error);
+    }
+  },
+
+  existUser: async (req, res, next) => {
+    let { username } = req.body;
+    try {
+      let existUser = await userCore.existUser(username);
+      if (existUser) return res.status(200).send(true);
+      else return res.status(404).send(false);
+    } catch (error) {
+      return next(error);
+    }
+  },
+
+  existEmail: async (req, res, next) => {
+    let { email } = req.body;
+    try {
+      let exisEmail = await  userCore.exisEmail(email)
+      if (exisEmail) return res.status(200).send(true);
+      else return res.status(404).send(false);
     } catch (error) {
       return next(error);
     }
@@ -24,10 +48,12 @@ const usersController = {
     let id = req.body.id || req.params;
     let user = req.body;
     try {
-      await userCore.editUser(id, user);
-      return res
-        .status(200)
-        .send(`The name ${user.username} has been successfully modified`);
+      let userEdited = await userCore.editUser(id, user);
+      if (userEdited)
+        return res
+          .status(200)
+          .send(`The name ${user.username} has been successfully modified`);
+      else return res.status(404).send(`The user does not exist`);
     } catch (error) {
       return next(error);
     }
@@ -37,7 +63,6 @@ const usersController = {
     let id = req.body.id || req.params;
     try {
       const delUser = await userCore.delUser(id);
-      //TODO: ESTA LOGICA NO SE SI DEBERIA IR ACA, INHABILITARIA EL CATCH?
       if (delUser)
         return res
           .status(200)
@@ -52,7 +77,8 @@ const usersController = {
     let body = req.body;
     try {
       let user = await userCore.login(body);
-      return res.status(200).send({ data: user });
+      if (user) return res.status(200).send({ data: user });
+      else return res.status(404).send(`The user or password is not correct`);
     } catch (error) {
       return next(error);
     }
@@ -65,7 +91,6 @@ const usersController = {
       return res
         .status(201)
         .send({ msg: `User ${user.username} was successfully created` });
-
     } catch (error) {
       return next(error);
     }

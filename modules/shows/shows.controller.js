@@ -4,7 +4,8 @@ let directorsController = {
   getShows: async (req, res, next) => {
     try {
       let getShows = await directorsCore.getShows();
-      return res.status(200).send(getShows);
+      if (getShows) return res.status(200).send(getShows);
+      else return res.status(404).send(`No available functions found`);
     } catch (error) {
       return next(error);
     }
@@ -13,7 +14,8 @@ let directorsController = {
   getShow: async (req, res, next) => {
     try {
       let getShow = await directorsCore.getShow();
-      return res.status(200).send(getShow);
+      if (getShow) return res.status(200).send(getShow);
+      else return res.status(404).send(`No available functions found`);
     } catch (error) {
       return next(error);
     }
@@ -33,8 +35,9 @@ let directorsController = {
     let show = req.body;
     let id = req.params;
     try {
-      await directorsCore.editShow(show, id);
-      return res.status(200).send(`The show has been successfully modified`);;
+      let showEdited = await directorsCore.editShow(show, id);
+      if (showEdited) return res.status(200).send(`The show has been successfully modified`);
+      else return res.status(404).send(`No available functions found`);
     } catch (error) {
       return next(error);
     }
@@ -44,8 +47,8 @@ let directorsController = {
     let id = req.params;
     try {
       let delShow = await directorsCore.delShow(id);
-      console.log(delShow)
-      return res.status(200).send(delShow);
+      if (delShow) return res.status(200).send(`Show successfully removed`);
+      else return res.status(404).send(`No available functions found`);
     } catch (error) {
       return next(error);
     }

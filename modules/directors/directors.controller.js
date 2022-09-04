@@ -4,7 +4,8 @@ let directorsController = {
   getDirectors: async (req, res, next) => {
     try {
       let getDirectors = await directorsCore.getDirectors();
-      return res.status(200).send(getDirectors);
+      if (getDirectors) return res.status(200).send(getDirectors);
+      else return res.status(404).send(`No directors found`);
     } catch (error) {
       return next(error);
     }
@@ -13,7 +14,8 @@ let directorsController = {
   getDirector: async (req, res, next) => {
     try {
       let getDirector = await directorsCore.getDirector();
-      return res.status(200).send(getDirector);
+      if (getDirector) return res.status(200).send(getDirector);
+      else return res.status(404).send(`Director not found`)
     } catch (error) {
       return next(error);
     }
@@ -34,7 +36,8 @@ let directorsController = {
     let id = req.params;
     try {
       let editDirector = await directorsCore.editDirector(director, id);
-      return res.status(200).send(editDirector);
+      if (editDirector) return res.status(200).send(editDirector);
+      else return res.status(404).send(`Director not found`)
     } catch (error) {
       return next(error);
     }
@@ -44,7 +47,8 @@ let directorsController = {
     let id = req.params;
     try {
       let delDirector = await directorsCore.delDirector(id);
-      return res.status(200).send(delDirector);
+      if (delDirector) return res.status(200).send(`Director successfully removed`);
+      else return res.status(404).send(`Director not found`);
     } catch (error) {
       return next(error);
     }

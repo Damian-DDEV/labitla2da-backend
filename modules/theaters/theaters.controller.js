@@ -4,7 +4,8 @@ let theatersController = {
   getTheaters: async (req, res, next) => {
     try {
       let getTheaters = await theatersCore.getTheaters();
-      return res.status(200).send(getTheaters);
+      if (getTheaters) return res.status(200).send(getTheaters);
+      else return res.status(404).send(`No movie theaters found`);
     } catch (error) {
       return next(error);
     }
@@ -14,7 +15,8 @@ let theatersController = {
     let id = req.params;
     try {
       let getTheater = await theatersCore.getTheater(id);
-      return res.status(200).send(getTheater);
+      if (getTheater) return res.status(200).send(getTheater);
+      else return res.status(404).send(`The movie theater was not found`);
     } catch (error) {
       return next(error);
     }
@@ -34,8 +36,9 @@ let theatersController = {
     let theater = req.body;
     let id = req.params;
     try {
-      await theatersCore.editTheater(theater, id);
-      return res.status(200).send(`The theater has been successfully modified`);
+      let theaterEdited = await theatersCore.editTheater(theater, id);
+      if (theaterEdited) return res.status(200).send(`The theater has been successfully modified`);
+      else return res.status(404).send(`The movie theater was not found`);
     } catch (error) {
       return next(error);
     }
@@ -45,7 +48,8 @@ let theatersController = {
     let id = req.params
     try {
       let delTheater = await theatersCore.delTheater(id);
-      return res.status(200).send(delTheater);
+      if (delTheater) return res.status(200).send(`Theater successfully removed`);
+      else return res.status(404).send(`No movie theaters found`)
     } catch (error) {
       return next(error);
     }

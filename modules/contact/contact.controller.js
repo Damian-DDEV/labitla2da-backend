@@ -4,7 +4,8 @@ let contactController = {
   getContacts: async (req, res, next) => {
     try {
       let getContacts = await contactCore.getContacts();
-      return res.status(200).send(getContacts);
+      if (getContacts) return res.status(200).send(getContacts);
+      else return res.status(404).send(`Messages not found`);
     } catch (error) {
       return next(error);
     }
@@ -13,7 +14,8 @@ let contactController = {
   getContact: async (req, res, next) => {
     try {
       let getContact = await contactCore.getContact();
-      return res.status(200).send(getContact);
+      if (getContact) return res.status(200).send(getContact);
+      else return res.status(404).send(`Messages not found`);
     } catch (error) {
       return next(error);
     }
@@ -33,8 +35,9 @@ let contactController = {
     let contact = req.body;
     let id = req.params;
     try {
-      await contactCore.editContact(contact,id);
-      return res.status(200).send(`The contact was successfully modified`);
+      let contactEdited = await contactCore.editContact(contact,id);
+      if (contactEdited) return res.status(200).send(`The contact was successfully modified`);
+      else return res.status(404).send(`Messages not found`);
     } catch (error) {
       return next(error);
     }
@@ -44,7 +47,8 @@ let contactController = {
     let id = req.params;
     try {
       let delContact = await contactCore.delContact(id);
-      return res.status(200).send(delContact);
+      if (delContact) return res.status(200).send(delContact);
+      else return res.status(404).send(`Message successfully removed`)
     } catch (error) {
       return next(error);
     }

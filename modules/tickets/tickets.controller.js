@@ -4,7 +4,8 @@ let ticketsController = {
   getTickets: async (req, res, next) => {
     try {
       let getTickets = await ticketsCore.getTickets();
-      return res.status(200).send(getTickets);
+      if (getTickets) return res.status(200).send(getTickets);
+      else return res.status(404).send(`No tickets found`);
     } catch (error) {
       return next(error);
     }
@@ -14,7 +15,8 @@ let ticketsController = {
     let id = req.params;
     try {
       let getTicket = await ticketsCore.getTicket(id);
-      return res.status(200).send(getTicket);
+      if(getTicket) return res.status(200).send(getTicket);
+      else return res.status(404).send(`Ticket not found`);
     } catch (error) {
       return next(error);
     }
@@ -34,8 +36,9 @@ let ticketsController = {
     let ticket = req.body;
     let id = req.params;
     try {
-      await ticketsCore.editTicket(ticket, id);
-      return res.status(200).send(`The ticket was successfully modified`);
+      let ticketEdited = await ticketsCore.editTicket(ticket, id);
+      if(ticketEdited) return res.status(200).send(`The ticket was successfully modified`);
+      else return res.status(404).send(`Ticket not found`);
     } catch (error) {
       return next(error);
     }
@@ -45,7 +48,8 @@ let ticketsController = {
     let id = req.params;
     try {
       let delTicket = await ticketsCore.delTicket(id);
-      return res.status(200).send(delTicket);
+      if (delTicket) return res.status(200).send(`Ticket successfully removed`);
+      else return res.status(404).send(`Ticket not found`);
     } catch (error) {
       return next(error);
     }

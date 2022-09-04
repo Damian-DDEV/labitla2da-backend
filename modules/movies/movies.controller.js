@@ -4,7 +4,8 @@ let moviesController = {
   getMovies: async (req, res, next) => {
     try {
       let getMovies = await moviesCore.getMovies();
-      return res.status(200).send(getMovies);
+      if (getMovies) return res.status(200).send(getMovies);
+      else return res.status(404).send(`No movies found`)
     } catch (error) {
       return next(error);
     }
@@ -14,7 +15,8 @@ let moviesController = {
     let id = req.params.id;
     try {
       let getMovie = await moviesCore.getMovie(id);
-      return res.status(200).send(getMovie);
+      if (getMovie) return res.status(200).send(getMovie);
+      else return res.status(404).send(`Movie not found`);
     } catch (error) {
       return next(error);
     }
@@ -47,7 +49,8 @@ let moviesController = {
     let id = req.params.id;
     try {
       let delMovie = await moviesCore.delMovie(id);
-      return res.status(200).send(delMovie);
+      if (delMovie) return res.status(200).send(`Movie successfully removed`);
+      else res.status(404).send(`Movie not found`)
     } catch (error) {
       return next(error);
     }
