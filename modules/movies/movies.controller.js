@@ -3,7 +3,11 @@ const moviesCore = require("./movies.core");
 let moviesController = {
   getMovies: async (req, res, next) => {
     try {
-      const id_genre= req.query.id_genre;
+      let id_genre=null
+      if(req.query.id_genre){
+      id_genre= req.query.id_genre;
+      }
+      console.log(req.query.id_genre+' id_genre')
       const keyWord = req.query.title;
       const { Op } = require("sequelize");
       let conditions  = [{}];
@@ -13,7 +17,6 @@ let moviesController = {
       if(keyWord!=null || keyWord==""){
         conditions.push({name: {[Op.substring]:keyWord}})
       }
-      console.log(conditions)
       let getMovies = await moviesCore.getMovies(conditions);
       if (getMovies) return res.status(200).send(getMovies);
       else return res.status(404).send(`No movies found`)
