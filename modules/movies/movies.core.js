@@ -3,8 +3,8 @@ const fs = require('fs');
 const enviroment = 'http://127.0.0.1:3000/'
 
 const moviesCore = {
-  getMovies: async () => {
-    let movies = await moviesRepository.getMovies();
+  getMovies: async (conditions) => {
+    let movies = await moviesRepository.getMovies(conditions);
     // Recorro las imagenes para setearle el path segun corresponda el enviroment
     // TODO: Ver como tomar el ip de cada enviromente con el process.env
     movies.forEach(movie => {

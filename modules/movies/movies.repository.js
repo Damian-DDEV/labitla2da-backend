@@ -1,8 +1,16 @@
 const Model = require("../../models/");
 
 const moviesRepository = {
-  getMovies: async () => {
+  /*getMovies: async () => {
       let movies = await Model.Movies.findAll({
+        include: ["genre", "director"]
+      });
+      return movies;
+  },*/
+  getMovies: async (conditions) => {
+    console.log(conditions)
+      let movies = await Model.Movies.findAll({
+        where:conditions,
         include: ["genre", "director"]
       });
       return movies;
