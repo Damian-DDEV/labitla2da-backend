@@ -12,6 +12,11 @@ const showsCore = {
         let show = await showsRepository.getShow();
         return show;
     },
+
+    getShowDate: async (date) => {
+        let getShowDate = await showsRepository.getShowDate(date);
+        return getShowDate;
+    },
     
     createShow: async (show) => {
         let showCreated = await showsRepository.createShow(show);

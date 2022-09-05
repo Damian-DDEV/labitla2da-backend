@@ -17,6 +17,12 @@ module.exports = {
       estado: {
         type: Sequelize.BOOLEAN
       },
+      email: {
+        type: Sequelize.STRING
+      },
+      dni: {
+        type: Sequelize.STRING
+      },
       createdAt: {
         type: Sequelize.DATE,
       },
