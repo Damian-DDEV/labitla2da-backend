@@ -25,7 +25,9 @@ const userCore = {
   },
 
   editUser: async (id, user) => {
-    user.password = bcrypt.hashSync(user.password, 10);
+    if (user.password){
+      user.password = bcrypt.hashSync(user.password, 10);
+    }
     const edituser = await UsersRepository.editUser(id, user);
     return edituser;
   },
