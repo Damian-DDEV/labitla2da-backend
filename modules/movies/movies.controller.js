@@ -7,7 +7,6 @@ let moviesController = {
       if(req.query.id_genre){
       id_genre= req.query.id_genre;
       }
-      console.log(req.query.id_genre+' id_genre')
       const keyWord = req.query.title;
       const { Op } = require("sequelize");
       let conditions  = [{}];

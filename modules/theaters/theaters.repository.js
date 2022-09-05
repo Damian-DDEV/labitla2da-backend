@@ -2,7 +2,9 @@ const Model = require("../../models");
 
 const theatersRepository = {
   getTheaters: async () => {
-    let theaters = Model.Theaters.findAll();
+    let theaters = Model.Theaters.findAll({
+      include: ["shows"]
+    });
     return theaters;
   },
 

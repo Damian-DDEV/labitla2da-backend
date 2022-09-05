@@ -8,13 +8,16 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      id_funcion: {
+      id_show: {
         type: Sequelize.INTEGER
       },
-      codigo: {
+      quantity: {
+        type: Sequelize.INTEGER
+      },
+      code: {
         type: Sequelize.STRING
       },
-      estado: {
+      status: {
         type: Sequelize.BOOLEAN
       },
       email: {
