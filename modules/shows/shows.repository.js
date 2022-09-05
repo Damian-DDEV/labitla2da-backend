@@ -1,5 +1,6 @@
 const Model = require("../../models");
 const { Op } = require('sequelize');
+const { Sequelize } = require("../../models");
 
 const showsRepository = {
   getShows: async () => {
@@ -16,7 +17,7 @@ const showsRepository = {
     let getShowDate = await Model.Shows.findAll({
       where: {
         date_time: {
-          [Op.like]: [date.date_time]
+          [Op.eq]: Sequelize.cast(date.date_time, "datetime")
         } 
       }
     })
