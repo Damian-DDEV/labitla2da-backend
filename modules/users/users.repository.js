@@ -29,6 +29,18 @@ const UsersRepository = {
     return Model.Users.scope("list").findOne({where: {email: email}})
   },
 
+  changePassword: async (passind) => {
+    return Model.Users.findOne({
+      where: {id : passind.id}
+    });  
+  },
+
+  savenewPass: async (passnidnew) => {
+    let { id } = passnidnew;
+    let existUser = await Model.Users.findOne({ where: { id:id } });
+    if (existUser) await Model.Users.update({password: passnidnew.passnew},{where: {id} });
+  },
+
   editUser: async (id, user) => {
     let getUsr = await Model.Users.findOne({ where: { id } });
     if (getUsr) return Model.Users.update(user, { where: { id } });

@@ -7,6 +7,7 @@ router.get("/", usersController.getUsers);
 router.get("/:id", usersController.getUser);
 router.post("/exist", usersController.existUser);
 router.post("/existemail", usersController.existEmail);
+router.post("/changepassword", usersController.changePassword);
 router.put("/:id", usersController.editUser);
 router.delete("/:id", usersController.delUser);
 

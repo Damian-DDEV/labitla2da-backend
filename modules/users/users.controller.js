@@ -36,7 +36,7 @@ const usersController = {
   existEmail: async (req, res, next) => {
     let { email } = req.body;
     try {
-      let exisEmail = await  userCore.exisEmail(email)
+      let exisEmail = await userCore.exisEmail(email)
       if (exisEmail) return res.status(200).send(true);
       else return res.status(404).send(false);
     } catch (error) {
@@ -44,8 +44,19 @@ const usersController = {
     }
   },
 
+  changePassword: async (req, res, next) => {
+    let passnid = req.body;
+    try {
+      let pass = await userCore.changePassword(passnid);
+      if(pass) return res.status(200).send(`Password has been changed successfully`);
+      else res.status(400).send(`The password is not the same`)
+    } catch (error) {
+      return next(error);
+    }
+  },
+
   editUser: async (req, res, next) => {
-    let id = req.body.id || req.params;
+    let id = req.params;
     let user = req.body;
     try {
       let userEdited = await userCore.editUser(id, user);

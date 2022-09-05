@@ -24,6 +24,28 @@ const userCore = {
     return existEmail;
   },
 
+  changePassword: async (passnid) => {
+    const passwords = await UsersRepository.changePassword(passnid);
+    
+    let { password } = passwords.toJSON();
+    
+    let PassMatch = bcrypt.compareSync(
+      passnid.old,
+      password
+    );
+
+    if (PassMatch) {
+      let passnidnew = {
+        id: passnid.id,
+        passnew: bcrypt.hashSync(passnid.new, 10)
+      }
+      await UsersRepository.savenewPass(passnidnew);
+      return true;
+    } else {
+      return false;
+    }
+  },
+
   editUser: async (id, user) => {
     if (user.password){
       user.password = bcrypt.hashSync(user.password, 10);

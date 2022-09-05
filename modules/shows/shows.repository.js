@@ -17,8 +17,8 @@ const showsRepository = {
     let getShowDate = await Model.Shows.findAll({
       where: {[Op.and] :{
         date_time: {
-          [Op.gt]: Sequelize.cast(date.concat(" 00:00:00"), "datetime"),
-          [Op.lt]: Sequelize.cast(date.concat(" 23:59:59"), "datetime")
+          [Op.gt]: Sequelize.cast(date.concat("00:00:00"), "datetime"),
+          [Op.lt]: Sequelize.cast(date.concat("23:59:59"), "datetime")
         },
         id_theaters:{
           [Op.eq]: theater
