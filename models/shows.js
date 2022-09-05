@@ -14,7 +14,7 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Shows.init({
-    date_time: DataTypes.DATE,
+    date_time: DataTypes.STRING,
     tickets_availables: DataTypes.INTEGER,
     id_movie: DataTypes.INTEGER,
     id_theaters: DataTypes.INTEGER
