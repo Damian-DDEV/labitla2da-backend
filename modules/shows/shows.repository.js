@@ -13,13 +13,17 @@ const showsRepository = {
     return show;
   },
 
-  getShowDate: async(date) => {
+  getShowDate: async(date,theater) => {
     let getShowDate = await Model.Shows.findAll({
-      where: {
+      where: {[Op.and] :{
         date_time: {
-          [Op.eq]: Sequelize.cast(date.date_time, "datetime")
-        } 
-      }
+          [Op.gt]: Sequelize.cast(date.concat(" 00:00:00"), "datetime"),
+          [Op.lt]: Sequelize.cast(date.concat(" 23:59:59"), "datetime")
+        },
+        id_theaters:{
+          [Op.eq]: theater
+        }
+      }}
     })
 
     return getShowDate

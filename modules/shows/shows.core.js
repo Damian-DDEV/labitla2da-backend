@@ -13,8 +13,8 @@ const showsCore = {
         return show;
     },
 
-    getShowDate: async (date) => {
-        let getShowDate = await showsRepository.getShowDate(date);
+    getShowDate: async (date,theater) => {
+        let getShowDate = await showsRepository.getShowDate(date,theater);
         return getShowDate;
     },
     

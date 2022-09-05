@@ -3,7 +3,7 @@ const router = express.Router();
 
 const showsController = require('./shows.controller');
 router.get('/', showsController.getShows);
-router.get('/showsdate', showsController.getShowDate);
+router.post('/showsdate', showsController.getShowDate);
 router.get('/:id', showsController.getShow);
 router.post('/', showsController.createShow);
 router.put('/:id', showsController.editShow);

@@ -21,9 +21,10 @@ let showsController = {
     }
   },
   getShowDate: async (req, res, next) => {
-    let date_time = req.body;
+    let date_time = req.body.date_time;
+    let theater = req.body.theater;
     try {
-      let getShows = await showsCore.getShowDate(date_time);
+      let getShows = await showsCore.getShowDate(date_time,theater);
       if (getShows) return res.status(200).send(getShows);
       else res.status(400).send(`No available functions found`); 
     } catch (error) {
