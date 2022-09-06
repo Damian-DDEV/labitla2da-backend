@@ -6,7 +6,7 @@ module.exports = {
       "movies",
       [
         {
-          name: "El señor de los anillos",
+          name: "The Lord of the Rings: The Return of the King",
           synopsis:
             "En la Tierra Media, el Señor Oscuro Sauron forjó los Grandes Anillos del Poder y creó uno con el poder de esclavizar a toda la Tierra Media. Frodo Bolsón es un hobbit al que su tío Bilbo hace portador del poderoso Anillo Único con la misión de destruirlo. Acompañado de sus amigos, Frodo emprende un viaje hacia Mordor, el único lugar donde el anillo puede ser destruido. Sin embargo, Sauron ordena la persecución del grupo para recuperar el anillo y acabar con la Tierra Media.",
           duration: "03:00:00",
@@ -28,7 +28,7 @@ module.exports = {
           id_usr: 1,
         },
         {
-          name: "Avengers End Game",
+          name: "Avengers: Endgame",
           synopsis:
             "Después de los eventos devastadores de Avengers: Infinity War, el universo está en ruinas debido a las acciones de Thanos, el Titán Loco. Con la ayuda de los aliados que quedaron, los Vengadores deberán reunirse una vez más para intentar detenerlo y restaurar el orden en el universo de una vez por todas.",
           duration: "01:58:00",
@@ -39,7 +39,7 @@ module.exports = {
           id_usr: 1,
         },
         {
-          name: "El Padrino",
+          name: "The Godfather",
           synopsis:
             "Don Vito Corleone es el respetado y temido jefe de una de las cinco familias de la mafia de Nueva York en los años 40. El hombre tiene cuatro hijos: Connie, Sonny, Fredo y Michael, que no quiere saber nada de los negocios sucios de su padre. Cuando otro capo, Sollozzo, intenta asesinar a Corleone, empieza una cruenta lucha entre los distintos clanes.",
           duration: "02:20:00",
@@ -72,7 +72,7 @@ module.exports = {
           id_usr: 1,
         },
         {
-          name: "El Hobbit",
+          name: "The Hobbit: An Unexpected Journey (2012)",
           synopsis:
             "Bilbo Bolsón lleva una vida sencilla con sus compañeros hobbits en la comarca, hasta que el mago Gandalf llega y lo convence de unirse a un grupo de enanos para recuperar el reino de Erebor. El viaje lleva a Bilbo en un camino a través de tierras peligrosas llenas de orcos, goblins y otras amenazas, además de su encuentro con Gollum y un sencillo anillo de oro que está unido al destino de la Tierra Media de una forma que Bilbo no puede imaginarse.",
           duration: "03:00:00",
@@ -105,7 +105,7 @@ module.exports = {
           id_usr: 1,
         },
         {
-          name: "Doctor strange, Multiverso de la locura",
+          name: "Doctor Strange in the Multiverse of Madness",
           synopsis:
             "El Dr. Stephen Strange abre un portal al multiverso al utilizar un hechizo prohibido. Ahora, su equipo debe enfrentarse a una amenaza que podría destruirlo todo..",
           duration: "03:00:00",

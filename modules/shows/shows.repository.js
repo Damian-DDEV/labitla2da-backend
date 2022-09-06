@@ -4,7 +4,9 @@ const { Sequelize } = require("../../models");
 
 const showsRepository = {
   getShows: async () => {
-    let shows = Model.Shows.findAll();
+    let shows = Model.Shows.findAll({order: [
+      ["date_time", "ASC"],
+    ],});
     return shows;
   },
 
