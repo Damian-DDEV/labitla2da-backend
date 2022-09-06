@@ -8,7 +8,6 @@ const moviesRepository = {
       return movies;
   },*/
   getMovies: async (conditions) => {
-    console.log(conditions)
       let movies = await Model.Movies.findAll({
         where:conditions,
         include: ["genre", "director"]

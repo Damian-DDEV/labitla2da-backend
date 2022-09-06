@@ -14,9 +14,10 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Tickets.init({
-    id_funcion: DataTypes.INTEGER,
-    codigo: DataTypes.STRING,
-    estado: DataTypes.BOOLEAN,
+    id_show: DataTypes.INTEGER,
+    quantity: DataTypes.INTEGER,
+    code: DataTypes.STRING,
+    status: DataTypes.BOOLEAN,
     email: DataTypes.STRING,
     dni: DataTypes.STRING
   }, {
