@@ -17,8 +17,9 @@ const directorsRepository = {
   },
 
   editDirector: async (director, id) => {
+    let idDirector=id.id
     let directorEdited = await Model.Directors.findOne(id);
-    if (directorEdited) return Model.Directors.update(director, { where: { id } });
+    if (directorEdited) return Model.Directors.update(director, { where: { id:idDirector } });
   },
 
   delDirector: async (id) => {
