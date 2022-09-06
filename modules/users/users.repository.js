@@ -42,12 +42,12 @@ const UsersRepository = {
   },
 
   editUser: async (id, user) => {
-    let getUsr = await Model.Users.findOne({ where: { id } });
-    if (getUsr) return Model.Users.update(user, { where: { id } });
+    let getUsr = await Model.Users.findOne({ where: { id:id.id  } });
+    if (getUsr) return Model.Users.update(user, { where: {id:id.id }});
   },
 
   delUser: async (id) => {
-    return Model.Users.destroy({ where: { id } });
+    return Model.Users.destroy({ where: { id:id.id } });
   },
 
   login: async (usernPass) => {

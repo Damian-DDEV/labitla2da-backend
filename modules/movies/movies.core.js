@@ -8,7 +8,6 @@ const moviesCore = {
     // Recorro las imagenes para setearle el path segun corresponda el enviroment
     movies.forEach(movie => {
       movie.path_img = enviroment + movie.path_img;
-      console.log(movie.path_img)
     });
     return movies;
   },

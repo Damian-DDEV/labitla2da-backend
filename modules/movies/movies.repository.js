@@ -29,8 +29,8 @@ const moviesRepository = {
   },
 
   editMovie: async (movie, id, img) => {
-    let movieEdited = await Model.Movies.findOne(id);
-    if (movieEdited) return Model.Movies.update(movie, { where: id });
+    let movieEdited = await Model.Movies.findOne({ where: {id:id.id} });
+    if (movieEdited) return Model.Movies.update(movie, { where: {id:id.id} });
     
   },
 
