@@ -18,7 +18,7 @@ const genresRepository = {
 
   editGenre: async (genre, id) => {
     let genreEdited = await Model.Genres.findOne(id);
-    if (genreEdited) return Model.Genres.update(genre, { where: { id } });
+    if (genreEdited) return Model.Genres.update(genre, { where: { id:id.id } });
   },
 
   delGenre: async (id) => {

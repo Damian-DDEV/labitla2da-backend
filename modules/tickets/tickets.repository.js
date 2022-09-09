@@ -12,6 +12,11 @@ const ticketsRepository = {
   },
 
   createTicket: async (ticket) => {
+    let showEdited = await Model.Shows.findByPk(ticket.id_show);
+    if (showEdited){ 
+        showEdited.tickets_availables=showEdited.tickets_availables-1
+        showEdited.save();
+    };
     const ticketCreated = await Model.Tickets.create(ticket);
     return ticketCreated;
   },

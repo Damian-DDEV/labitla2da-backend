@@ -3,8 +3,11 @@ const moviesCore = require("./movies.core");
 let moviesController = {
   getMovies: async (req, res, next) => {
     try {
+      let id_genre=null
+      if(req.query.id_genre){
+      id_genre= req.query.id_genre;
+      }
       let words = req.query.title;
-      let id_genre = req.query.id_genre;
       let getMovies = await moviesCore.getMovies(words, id_genre);
       if (getMovies) return res.status(200).send(getMovies);
       else return res.status(404).send(`No movies found`)

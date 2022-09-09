@@ -3,21 +3,15 @@ const { Op } = require("sequelize");
 
 const moviesRepository = {
   getMovies: async (words, id_genre) => {
-      const movies = await Model.Movies.findAll({
-        where: {
-          [Op.or]: [
-            {
-              name: {
-                [Op.substring]: words
-              }
-            },
-            {
-              id_genre: {
-                [Op.eq]: id_genre
-              }
-            }
-          ]
-        },
+      let conditions  = [{}];
+      if(id_genre!=null){
+        conditions.push({id_genre:id_genre});
+        }
+      if(words!=null || words==""){
+        conditions.push({name: {[Op.substring]:words}})
+      }
+      let movies = await Model.Movies.findAll({
+        where:conditions,
         include: ["genre", "director"]
       });
       return movies;

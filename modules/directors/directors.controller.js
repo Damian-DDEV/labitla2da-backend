@@ -44,7 +44,7 @@ const directorsController = {
   },
 
   delDirector: async (req, res, next) => {
-    const id = req.params;
+    const id = req.params.id;
     try {
       const delDirector = await directorsCore.delDirector(id);
       if (delDirector) return res.status(200).send(`Director successfully removed`);
