@@ -48,7 +48,7 @@ const UsersRepository = {
   },
 
   delUser: async (id) => {
-    return Model.Users.destroy({ where: id });
+    return Model.Users.destroy({ where: { id } });
   },
 
   login: async (usernPass) => {
