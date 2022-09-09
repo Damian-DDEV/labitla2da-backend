@@ -10,6 +10,16 @@ const ticketsController = {
       return next(error);
     }
   },
+  getTicketsByDni: async (req, res, next) => {
+    const dni = req.params;
+    try {
+      const getTickets = await ticketsCore.getTicketsByDni(dni);
+      if (getTickets) return res.status(200).send(getTickets);
+      else return res.status(404).send(`No tickets found`);
+    } catch (error) {
+      return next(error);
+    }
+  },
 
   getTicket: async (req, res, next) => {
     const id = req.params;

@@ -8,6 +8,10 @@ const ticketsCore = {
         const tickets = ticketsRepository.getTickets();
         return tickets;
     },
+    getTicketsByDni: async (dni) => {
+        const tickets = ticketsRepository.getTicketsByDni(dni);
+        return tickets;
+    },
 
     getTicket: async (id) => {
         const ticket = await ticketsRepository.getTicket(id);

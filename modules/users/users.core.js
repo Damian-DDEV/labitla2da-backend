@@ -70,7 +70,7 @@ const userCore = {
           userToJson.password
         );
         if (PassMatch) {
-          userToJson.jwt = jwt.sign({ id_user: userToJson.id }, AuthJWT.secret, {
+          userToJson.jwt = jwt.sign({ id_user: userToJson.id, userDni: userToJson.dni }, AuthJWT.secret, {
             expiresIn: AuthJWT.expires,
           });
   
