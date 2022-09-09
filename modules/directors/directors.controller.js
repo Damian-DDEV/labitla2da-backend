@@ -1,9 +1,9 @@
 const directorsCore = require("./directors.core");
 
-let directorsController = {
+const directorsController = {
   getDirectors: async (req, res, next) => {
     try {
-      let getDirectors = await directorsCore.getDirectors();
+      const getDirectors = await directorsCore.getDirectors();
       if (getDirectors) return res.status(200).send(getDirectors);
       else return res.status(404).send(`No directors found`);
     } catch (error) {
@@ -13,7 +13,7 @@ let directorsController = {
 
   getDirector: async (req, res, next) => {
     try {
-      let getDirector = await directorsCore.getDirector();
+      const getDirector = await directorsCore.getDirector();
       if (getDirector) return res.status(200).send(getDirector);
       else return res.status(404).send(`Director not found`)
     } catch (error) {
@@ -22,9 +22,9 @@ let directorsController = {
   },
 
   createDirector: async (req,res,next) => {
-    let director = req.body;
+    const director = req.body;
     try {
-        let directorCreated = await directorsCore.createDirector(director);
+        const directorCreated = await directorsCore.createDirector(director);
         return res.status(201).send(directorCreated);
     } catch (error) {
         return next(error);
@@ -32,10 +32,10 @@ let directorsController = {
   },
 
   editDirector: async (req, res, next) => {
-    let director = req.body;
-    let id = req.params;
+    const director = req.body;
+    const id = req.params;
     try {
-      let editDirector = await directorsCore.editDirector(director, id);
+      const editDirector = await directorsCore.editDirector(director, id);
       if (editDirector) return res.status(200).send(editDirector);
       else return res.status(404).send(`Director not found`)
     } catch (error) {
@@ -44,9 +44,9 @@ let directorsController = {
   },
 
   delDirector: async (req, res, next) => {
-    let id = req.params;
+    const id = req.params;
     try {
-      let delDirector = await directorsCore.delDirector(id);
+      const delDirector = await directorsCore.delDirector(id);
       if (delDirector) return res.status(200).send(`Director successfully removed`);
       else return res.status(404).send(`Director not found`);
     } catch (error) {

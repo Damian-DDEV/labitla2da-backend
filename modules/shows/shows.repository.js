@@ -4,19 +4,19 @@ const { Sequelize } = require("../../models");
 
 const showsRepository = {
   getShows: async () => {
-    let shows = Model.Shows.findAll({order: [
+    const shows = Model.Shows.findAll({order: [
       ["date_time", "ASC"],
     ],});
     return shows;
   },
 
   getShow: async (id) => {
-    let show = await Model.Shows.findOne({ where: { id } });
+    const show = await Model.Shows.findOne({ where: { id } });
     return show;
   },
 
   getShowDate: async(date,theater) => {
-    let getShowDate = await Model.Shows.findAll({
+    const getShowDate = await Model.Shows.findAll({
       where: {[Op.and] :{
         date_time: {
           [Op.gt]: Sequelize.cast(date.concat(" 00:00:00"), "datetime"),
@@ -32,17 +32,17 @@ const showsRepository = {
   },
 
   createShow: async (show) => {
-    let showCreated = await Model.Shows.create(show);
+    const showCreated = await Model.Shows.create(show);
     return showCreated;
   },
 
   editShow: async (show, id) => {
-    let showEdited = await Model.Shows.findOne(id);
+    const showEdited = await Model.Shows.findOne(id);
     if (showEdited) return Model.Shows.update(show, { where: { id } });
   },
 
   delShow: async (id) => {
-      let delShow = await Model.Shows.destroy({ where: { id } });
+      const delShow = await Model.Shows.destroy({ where: { id } });
       return delShow;
   },
 };

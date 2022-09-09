@@ -18,7 +18,7 @@ const UsersRepository = {
   },
 
   getUser: async (id) => {
-    return Model.Users.scope("list").findOne({ where: { id } });
+    return Model.Users.scope("list").findOne({ where: id });
   },
 
   existUser: async (username) => {
@@ -26,6 +26,7 @@ const UsersRepository = {
   },
 
   exisEmail: async (email) => {
+    console.log(email)
     return Model.Users.scope("list").findOne({where: {email: email}})
   },
 
@@ -36,23 +37,23 @@ const UsersRepository = {
   },
 
   savenewPass: async (passnidnew) => {
-    let { id } = passnidnew;
-    let existUser = await Model.Users.findOne({ where: { id:id } });
-    if (existUser) await Model.Users.update({password: passnidnew.passnew},{where: {id} });
+    const { id } = passnidnew;
+    const existUser = await Model.Users.findOne({ where: { id:id } });
+    if (existUser) await Model.Users.update({password: passnidnew.passnew},{where: id });
   },
 
   editUser: async (id, user) => {
-    let getUsr = await Model.Users.findOne({ where: { id } });
-    if (getUsr) return Model.Users.update(user, { where: { id } });
+    const getUsr = await Model.Users.findOne({ where: id });
+    if (getUsr) return Model.Users.update(user, { where: id });
   },
 
   delUser: async (id) => {
-    return Model.Users.destroy({ where: { id } });
+    return Model.Users.destroy({ where: id });
   },
 
   login: async (usernPass) => {
     const { username } = usernPass;
-    let getUsr = await Model.Users.scope("list").findOne({
+    const getUsr = await Model.Users.scope("list").findOne({
       where: {
         username: username,
       },

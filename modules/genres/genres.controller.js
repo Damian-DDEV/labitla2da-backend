@@ -1,9 +1,9 @@
 const genresCore = require("./genres.core");
 
-let genresController = {
+const genresController = {
   getGenres: async (req, res, next) => {
     try {
-      let getGenres = await genresCore.getGenres();
+      const getGenres = await genresCore.getGenres();
       if (getGenres) return res.status(200).send(getGenres);
       else return res.status(404).send(`No genres found`);
     } catch (error) {
@@ -12,8 +12,9 @@ let genresController = {
   },
 
   getGenre: async (req, res, next) => {
+    const id = req.params;
     try {
-      let getGenre = await genresCore.getGenre();
+      const getGenre = await genresCore.getGenre(id);
       if (getGenre) return res.status(200).send(getGenre);
       else return res.status(404).send(`No genres found`);
     } catch (error) {
@@ -22,9 +23,9 @@ let genresController = {
   },
 
   createGenre: async (req,res,next) => {
-    let genre = req.body;
+    const genre = req.body;
     try {
-        let genreCreated = await genresCore.createGenre(genre);
+        const genreCreated = await genresCore.createGenre(genre);
         return res.status(201).send(genreCreated);
     } catch (error) {
         return next(error);
@@ -32,10 +33,10 @@ let genresController = {
   },
 
   editGenre: async (req, res, next) => {
-    let genre = req.body;
-    let id = req.params;
+    const genre = req.body;
+    const id = req.params;
     try {
-      let genreEdited = await genresCore.editGenre(genre, id);
+      const genreEdited = await genresCore.editGenre(genre, id);
       if (genreEdited) return res.status(200).send(`The ${genre.name} genre was successfully modified`);
       else return res.status(404).send(`No genres found`);
     } catch (error) {
@@ -44,9 +45,9 @@ let genresController = {
   },
 
   delGenre: async (req, res, next) => {
-    let id = req.params;
+    const id = req.params.id;
     try {
-      let delGenre = await genresCore.delGenre(id);
+      const delGenre = await genresCore.delGenre(id);
       if (delGenre) return res.status(200).send(delGenre);
       else return res.status(404).send(`Genre successfully removed`);
     } catch (error) {

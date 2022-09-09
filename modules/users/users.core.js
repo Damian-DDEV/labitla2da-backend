@@ -27,15 +27,15 @@ const userCore = {
   changePassword: async (passnid) => {
     const passwords = await UsersRepository.changePassword(passnid);
     
-    let { password } = passwords.toJSON();
+    const { password } = passwords.toJSON();
     
-    let PassMatch = bcrypt.compareSync(
+    const PassMatch = bcrypt.compareSync(
       passnid.old,
       password
     );
 
     if (PassMatch) {
-      let passnidnew = {
+      const passnidnew = {
         id: passnid.id,
         passnew: bcrypt.hashSync(passnid.new, 10)
       }
@@ -62,10 +62,10 @@ const userCore = {
   login: async (usernPass) => {
     const userLogin = await UsersRepository.login(usernPass);
     if (userLogin){
-      let userToJson = userLogin.toJSON();
+      const userToJson = userLogin.toJSON();
       if (userToJson) {
         //Comparamos la password que viene desde la petición con la que devuelve la base de datos, si esto da true tenemos un login exitoso.
-        let PassMatch = bcrypt.compareSync(
+        const PassMatch = bcrypt.compareSync(
           usernPass.password,
           userToJson.password
         );
@@ -92,9 +92,9 @@ const userCore = {
 
   refresh: async (token) => {
     //TODO: FALTA HANDLING DE INVALID TOKEN
-    let verifyToken = jwt.verify(token, AuthJWT.refresh);
-    let { id_user } = verifyToken;
-    let getUser = await UsersRepository.refresh(id_user);
+    const verifyToken = jwt.verify(token, AuthJWT.refresh);
+    const { id_user } = verifyToken;
+    const getUser = await UsersRepository.refresh(id_user);
     if (getUser) {
       return jwt.sign({ id_user: id_user }, AuthJWT.secret, {
         expiresIn: AuthJWT.expires,

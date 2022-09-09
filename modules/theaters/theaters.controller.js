@@ -1,9 +1,9 @@
 const theatersCore = require("./theaters.core");
 
-let theatersController = {
+const theatersController = {
   getTheaters: async (req, res, next) => {
     try {
-      let getTheaters = await theatersCore.getTheaters();
+      const getTheaters = await theatersCore.getTheaters();
       if (getTheaters) return res.status(200).send(getTheaters);
       else return res.status(404).send(`No movie theaters found`);
     } catch (error) {
@@ -12,9 +12,9 @@ let theatersController = {
   },
 
   getTheater: async (req, res, next) => {
-    let id = req.params;
+    const id = req.params;
     try {
-      let getTheater = await theatersCore.getTheater(id);
+      const getTheater = await theatersCore.getTheater(id);
       if (getTheater) return res.status(200).send(getTheater);
       else return res.status(404).send(`The movie theater was not found`);
     } catch (error) {
@@ -23,9 +23,9 @@ let theatersController = {
   },
 
   createTheater: async (req,res,next) => {
-    let theater = req.body;
+    const theater = req.body;
     try {
-        let theaterCreated = await theatersCore.createTheater(theater);
+        const theaterCreated = await theatersCore.createTheater(theater);
         return res.status(201).send(theaterCreated);
     } catch (error) {
         return next(error);
@@ -33,10 +33,10 @@ let theatersController = {
   },
 
   editTheater: async (req, res, next) => {
-    let theater = req.body;
-    let id = req.params;
+    const theater = req.body;
+    const id = req.params;
     try {
-      let theaterEdited = await theatersCore.editTheater(theater, id);
+      const theaterEdited = await theatersCore.editTheater(theater, id);
       if (theaterEdited) return res.status(200).send(`The theater has been successfully modified`);
       else return res.status(404).send(`The movie theater was not found`);
     } catch (error) {
@@ -45,9 +45,9 @@ let theatersController = {
   },
 
   delTheater: async (req, res, next) => {
-    let id = req.params
+    const id = req.params
     try {
-      let delTheater = await theatersCore.delTheater(id);
+      const delTheater = await theatersCore.delTheater(id);
       if (delTheater) return res.status(200).send(`Theater successfully removed`);
       else return res.status(404).send(`No movie theaters found`)
     } catch (error) {

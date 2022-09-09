@@ -3,7 +3,7 @@ const userCore = require("./users.core");
 const usersController = {
   getUsers: async (req, res, next) => {
     try {
-      let getUsers = await userCore.getUsers();
+      const getUsers = await userCore.getUsers();
       if (getUsers) return res.status(200).send(getUsers);
       else return res.status(404).send(`No users found`);
     } catch (error) {
@@ -12,9 +12,9 @@ const usersController = {
   },
 
   getUser: async (req, res, next) => {
-    let id = req.body.id || req.params.id;
+    const id = req.params;
     try {
-      let getUser = await userCore.getUser(id);
+      const getUser = await userCore.getUser(id);
       if (getUser) return res.status(200).send(getUser);
       else return res.status(404).send(`The user does not exist`);
     } catch (error) {
@@ -23,9 +23,9 @@ const usersController = {
   },
 
   existUser: async (req, res, next) => {
-    let { username } = req.body;
+    const { username } = req.body;
     try {
-      let existUser = await userCore.existUser(username);
+      const existUser = await userCore.existUser(username);
       if (existUser) return res.status(200).send(true);
       else return res.status(404).send(false);
     } catch (error) {
@@ -34,9 +34,9 @@ const usersController = {
   },
 
   existEmail: async (req, res, next) => {
-    let { email } = req.body;
+    const { email } = req.body;
     try {
-      let exisEmail = await userCore.exisEmail(email)
+      const exisEmail = await userCore.exisEmail(email)
       if (exisEmail) return res.status(200).send(true);
       else return res.status(404).send(false);
     } catch (error) {
@@ -45,9 +45,9 @@ const usersController = {
   },
 
   changePassword: async (req, res, next) => {
-    let passnid = req.body;
+    const passnid = req.body;
     try {
-      let pass = await userCore.changePassword(passnid);
+      const pass = await userCore.changePassword(passnid);
       if(pass) return res.status(200).send(`Password has been changed successfully`);
       else res.status(400).send(`The password is not the same`)
     } catch (error) {
@@ -56,10 +56,10 @@ const usersController = {
   },
 
   editUser: async (req, res, next) => {
-    let id = req.params;
-    let user = req.body;
+    const id = req.params;
+    const user = req.body;
     try {
-      let userEdited = await userCore.editUser(id, user);
+      const userEdited = await userCore.editUser(id, user);
       if (userEdited)
         return res
           .status(200)
@@ -71,7 +71,7 @@ const usersController = {
   },
 
   delUser: async (req, res, next) => {
-    let id = req.body.id || req.params;
+    const id = req.body.id || req.params;
     try {
       const delUser = await userCore.delUser(id);
       if (delUser)
@@ -85,9 +85,9 @@ const usersController = {
   },
 
   login: async (req, res, next) => {
-    let body = req.body;
+    const body = req.body;
     try {
-      let user = await userCore.login(body);
+      const user = await userCore.login(body);
       if (user) return res.status(200).send({ data: user });
       else return res.status(404).send(`The user or password is not correct`);
     } catch (error) {
@@ -96,7 +96,7 @@ const usersController = {
   },
 
   register: async (req, res, next) => {
-    let user = req.body;
+    const user = req.body;
     try {
       await userCore.register(user);
       return res
@@ -108,10 +108,10 @@ const usersController = {
   },
 
   refreshToken: async (req, res, next) => {
-    let token = req.headers["token"];
+    const token = req.headers["token"];
 
     try {
-      let refToken = await userCore.refresh(token);
+      const refToken = await userCore.refresh(token);
       if (!refToken) {
         return res.status(404).json({ msg: "Invalid token" });
       }

@@ -1,9 +1,9 @@
 const contactCore = require("./contact.core");
 
-let contactController = {
+const contactController = {
   getContacts: async (req, res, next) => {
     try {
-      let getContacts = await contactCore.getContacts();
+      const getContacts = await contactCore.getContacts();
       if (getContacts) return res.status(200).send(getContacts);
       else return res.status(404).send(`Messages not found`);
     } catch (error) {
@@ -12,8 +12,9 @@ let contactController = {
   },
 
   getContact: async (req, res, next) => {
+    const id = req.params.id;
     try {
-      let getContact = await contactCore.getContact();
+      const getContact = await contactCore.getContact(id);
       if (getContact) return res.status(200).send(getContact);
       else return res.status(404).send(`Messages not found`);
     } catch (error) {
@@ -22,9 +23,9 @@ let contactController = {
   },
 
   createContact: async (req,res,next) => {
-    let contact = req.body;
+    const contact = req.body;
     try {
-        let createContact = await contactCore.createContact(contact);
+        const createContact = await contactCore.createContact(contact);
         return res.status(201).send(createContact);
     } catch (error) {
         return next(error);
@@ -32,10 +33,11 @@ let contactController = {
   },
 
   editContact: async (req, res, next) => {
-    let contact = req.body;
-    let id = req.params;
+    const contact = req.body;
+    const id = req.params;
     try {
-      let contactEdited = await contactCore.editContact(contact,id);
+      const contactEdited = await contactCore.editContact(contact,id);
+      //TODO: Si es ta eliminado y lo quiero editar devuelve 0, es decir no l oedita.
       if (contactEdited) return res.status(200).send(`The contact was successfully modified`);
       else return res.status(404).send(`Messages not found`);
     } catch (error) {
@@ -44,9 +46,9 @@ let contactController = {
   },
 
   delContact: async (req, res, next) => {
-    let id = req.params;
+    const id = req.params;
     try {
-      let delContact = await contactCore.delContact(id);
+      const delContact = await contactCore.delContact(id);
       if (delContact) return res.status(200).send(delContact);
       else return res.status(404).send(`Message successfully removed`)
     } catch (error) {

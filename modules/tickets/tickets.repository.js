@@ -2,27 +2,27 @@ const Model = require("../../models/");
 
 const ticketsRepository = {
   getTickets: async () => {
-    let tickets = Model.Tickets.findAll();
+    const tickets = Model.Tickets.findAll();
     return tickets;
   },
 
   getTicket: async (id) => {
-    let ticket = await Model.Tickets.findOne({ where: { id } });
+    const ticket = await Model.Tickets.findOne({ where: { id } });
     return ticket;
   },
 
   createTicket: async (ticket) => {
-    let ticketCreated = await Model.Tickets.create(ticket);
+    const ticketCreated = await Model.Tickets.create(ticket);
     return ticketCreated;
   },
 
   editTicket: async (ticket, id) => {
-    let ticketEdited = await Model.Tickets.findOne(id);
+    const ticketEdited = await Model.Tickets.findOne(id);
     if (ticketEdited) return Model.Tickets.update(ticket, { where: { id } });
   },
 
   delTicket: async (id) => {
-    let delTicket = await Model.Tickets.destroy({ where: { id } });
+    const delTicket = await Model.Tickets.destroy({ where: { id } });
     return delTicket;
   },
 };

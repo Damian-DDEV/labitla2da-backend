@@ -1,9 +1,9 @@
 const ticketsCore = require("./tickets.core");
 
-let ticketsController = {
+const ticketsController = {
   getTickets: async (req, res, next) => {
     try {
-      let getTickets = await ticketsCore.getTickets();
+      const getTickets = await ticketsCore.getTickets();
       if (getTickets) return res.status(200).send(getTickets);
       else return res.status(404).send(`No tickets found`);
     } catch (error) {
@@ -12,9 +12,9 @@ let ticketsController = {
   },
 
   getTicket: async (req, res, next) => {
-    let id = req.params;
+    const id = req.params;
     try {
-      let getTicket = await ticketsCore.getTicket(id);
+      const getTicket = await ticketsCore.getTicket(id);
       if(getTicket) return res.status(200).send(getTicket);
       else return res.status(404).send(`Ticket not found`);
     } catch (error) {
@@ -23,9 +23,9 @@ let ticketsController = {
   },
 
   createTicket: async (req,res,next) => {
-    let ticket = req.body;
+    const ticket = req.body;
     try {
-        let ticketCreated = await ticketsCore.createTicket(ticket);
+        const ticketCreated = await ticketsCore.createTicket(ticket);
         return res.status(201).send(ticketCreated);
     } catch (error) {
         return next(error);
@@ -33,10 +33,10 @@ let ticketsController = {
   },
 
   editTicket: async (req, res, next) => {
-    let ticket = req.body;
-    let id = req.params;
+    const ticket = req.body;
+    const id = req.params;
     try {
-      let ticketEdited = await ticketsCore.editTicket(ticket, id);
+      const ticketEdited = await ticketsCore.editTicket(ticket, id);
       if(ticketEdited) return res.status(200).send(`The ticket was successfully modified`);
       else return res.status(404).send(`Ticket not found`);
     } catch (error) {
@@ -45,9 +45,9 @@ let ticketsController = {
   },
 
   delTicket: async (req, res, next) => {
-    let id = req.params;
+    const id = req.params;
     try {
-      let delTicket = await ticketsCore.delTicket(id);
+      const delTicket = await ticketsCore.delTicket(id);
       if (delTicket) return res.status(200).send(`Ticket successfully removed`);
       else return res.status(404).send(`Ticket not found`);
     } catch (error) {

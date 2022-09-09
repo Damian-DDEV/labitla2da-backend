@@ -7,18 +7,13 @@ const genresRepository = {
   },
 
   getGenre: async (id) => {
-    let genre = await Model.Genres.findOne({ where: { id } });
+    let genre = await Model.Genres.findOne({ where:  id  });
     return genre;
   },
 
   createGenre: async (genre) => {
-    try {
       let genreCreated = await Model.Genres.create(genre);
       return genreCreated;
-      
-    } catch (error) {
-      console.log(error)
-    }
   },
 
   editGenre: async (genre, id) => {

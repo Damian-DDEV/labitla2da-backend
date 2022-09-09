@@ -1,29 +1,46 @@
 const ticketsRepository = require('./tickets.repository');
+const transporter = require ('../../config/email');
 
 
 const ticketsCore = {
 
     getTickets: async () => {
-        let tickets = ticketsRepository.getTickets();
+        const tickets = ticketsRepository.getTickets();
         return tickets;
     },
 
     getTicket: async (id) => {
-        let ticket = await ticketsRepository.getTicket(id);
+        const ticket = await ticketsRepository.getTicket(id);
         return ticket;
     },
     createTicket: async (ticket) => {
-        let ticketCreated = await ticketsRepository.createTicket(ticket);
-        return ticketCreated;
+        const ticketCreated = await ticketsRepository.createTicket(ticket);
+        if (ticketCreated) {
+            const mailOptions = {
+                from: "Remitente",
+                to: `${ticket.email}`,
+                subject: "Enviado",
+                text: "HI"
+            }
+
+            transporter.sendMail(mailOptions, (err, info) => {
+                if (err) {
+                    console.log('error');
+                } else {
+                    return ticketCreated;
+                }
+            })
+        }
+        
     },
 
     editTicket: async (ticket, id) => {
-        let ticketEdited = await ticketsRepository.editTicket(ticket, id);
+        const ticketEdited = await ticketsRepository.editTicket(ticket, id);
         return ticketEdited;
     },
 
     delTicket: async (id) => {
-        let delTicket = await ticketsRepository.delTicket(id);
+        const delTicket = await ticketsRepository.delTicket(id);
         return delTicket;
     }
 }

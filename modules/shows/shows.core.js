@@ -4,32 +4,32 @@ const showsRepository = require('./shows.repository');
 const showsCore = {
 
     getShows: async () => {
-        let shows = showsRepository.getShows();
+        const shows = showsRepository.getShows();
         return shows;
     },
 
     getShow: async () => {
-        let show = await showsRepository.getShow();
+        const show = await showsRepository.getShow();
         return show;
     },
 
     getShowDate: async (date,theater) => {
-        let getShowDate = await showsRepository.getShowDate(date,theater);
+        const getShowDate = await showsRepository.getShowDate(date,theater);
         return getShowDate;
     },
     
     createShow: async (show) => {
-        let showCreated = await showsRepository.createShow(show);
+        const showCreated = await showsRepository.createShow(show);
         return showCreated;
     },
 
     editShow: async (show, id) => {
-        let showEdited = await showsRepository.editShow(show, id);
+        const showEdited = await showsRepository.editShow(show, id);
         return showEdited;
     },
 
     delShow: async (id) => {
-        let delShow = await showsRepository.delShow(id);
+        const delShow = await showsRepository.delShow(id);
         return delShow;
     }
 }

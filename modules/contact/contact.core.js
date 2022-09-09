@@ -4,26 +4,26 @@ const contactRepository = require('./contact.repository');
 const contactCore = {
 
     getContacts: async () => {
-        let contacts = contactRepository.getContacts();
+        const contacts = contactRepository.getContacts();
         return contacts;
     },
 
-    getContact: async () => {
-        let contact = await contactRepository.getContact();
+    getContact: async (id) => {
+        const contact = await contactRepository.getContact(id);
         return contact;
     },
     createContact: async (contact) => {
-        let contactCreated = await contactRepository.createContact(contact);
+        const contactCreated = await contactRepository.createContact(contact);
         return contactCreated;
     },
 
     editContact: async (contact, id) => {
-        let contactEdited = await contactRepository.editContact(contact,id);
+        const contactEdited = await contactRepository.editContact(contact,id);
         return contactEdited;
     },
 
     delContact: async (id) => {
-        let delContact = await contactRepository.delContact(id);
+        const delContact = await contactRepository.delContact(id);
         return delContact;
     }
 }

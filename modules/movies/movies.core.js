@@ -1,14 +1,13 @@
 const moviesRepository = require("./movies.repository");
 const fs = require('fs');
-const enviroment = "http://127.0.0.1:3000/"
+const enviroment = process.env.API_URL;
 
 const moviesCore = {
-  getMovies: async (conditions) => {
-    const movies = await moviesRepository.getMovies(conditions);
+  getMovies: async (words, id_genre) => {
+    const movies = await moviesRepository.getMovies(words, id_genre);
     // Recorro las imagenes para setearle el path segun corresponda el enviroment
     movies.forEach(movie => {
       movie.path_img = enviroment + movie.path_img;
-      console.log(movie.path_img)
     });
     return movies;
   },
@@ -31,7 +30,6 @@ const moviesCore = {
   },
 
   editMovie: async (movie, id, img) => {
-    
     if(img){
       fs.renameSync(img.path, img.path+'.'+img.mimetype.split('/')[1]);
       movie.path_img = img.destination.split('/')[1]+'/'+img.filename+'.'+img.mimetype.split('/')[1]
@@ -44,11 +42,6 @@ const moviesCore = {
     const delMovie = await moviesRepository.delMovie(id);
     return delMovie;
   },
-
-  uploadimg: async (img) => {
-    const upimg = await moviesRepository.uploadimg();
-    return upimg; 
-  }
 };
 
 module.exports = moviesCore;
