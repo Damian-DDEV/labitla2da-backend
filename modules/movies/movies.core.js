@@ -92,6 +92,19 @@ const moviesCore = {
         console.error(error);
       }
     }
+    if(imgCover){
+      const options = {
+        use_filename: false,
+        unique_filename: false,
+        overwrite: true,
+      };
+      try {
+        const result = await cloudinary.uploader.upload(imgCover.path, options);
+        movie.path_img_banner = (result.public_id)
+      } catch (error) {
+        console.error(error);
+      }
+    }
     const editMovie = await moviesRepository.editMovie(movie, id, img);
     return editMovie;
   },
