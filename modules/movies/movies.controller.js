@@ -44,11 +44,11 @@ let moviesController = {
     let id = req.params;
     let img=null
     let imgCover=null
-    if(req.files['myImage'][0]){
-    let img = req.files['myImage'][0];
+    if(typeof req.files['myImage'][0]!== 'undefined'){
+    img = req.files['myImage'][0];
     }
-    if(req.files['myImage2'][0]){
-    let imgCover = req.files['myImage2'][0];
+    if(typeof req.files['myImage2'][0]!== 'undefined'){
+    imgCover = req.files['myImage2'][0];
     }
     try {
       let movieEdited = await moviesCore.editMovie(movie, id, img,imgCover);
