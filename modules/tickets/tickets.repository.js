@@ -22,7 +22,7 @@ const ticketsRepository = {
         showEdited.tickets_availables=showEdited.tickets_availables-ticket.quantity
         showEdited.save();
     };
-    const ticketCreated = await Model.Tickets.create(ticket);
+    const ticketCreated = await Model.Tickets.create(ticket, {include: { all: true, nested: true }});
     return ticketCreated;
   },
 

@@ -20,11 +20,12 @@ const ticketsCore = {
     createTicket: async (ticket) => {
         const ticketCreated = await ticketsRepository.createTicket(ticket);
         if (ticketCreated) {
+            console.log(ticketCreated)
             const mailOptions = {
                 from: "Remitente",
                 to: `${ticket.email}`,
                 subject: "Enviado",
-                text: "HI"
+                text: "Tu codigo para la pelicula "+ticketCreated.shows.movie.name+ " es "+ticketCreated.code
             }
 
             transporter.sendMail(mailOptions, (err, info) => {
