@@ -11,17 +11,6 @@ app.use(cors());
 app.use(routes);
 app.use(express.static(__dirname + '/public'));
 
-
-app.use(function(req,res,next) {
-    req.connection.setNoDelay(true)
-    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-    res.header("Access-Control-Allow-Credentials", true);
-    res.header("Access-Control-Allow-Origin", "https://l2-front.vercel.app/");
-    res.header('Access-Control-Expose-Headers', 'agreementrequired');
-  
-    next()
-})
-
 const server = http.createServer(app);
 
 const port = process.env.PORT || 3000;
