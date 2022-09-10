@@ -42,6 +42,8 @@ let moviesController = {
   editMovie: async (req, res, next) => {
     let movie = req.body;
     let id = req.params;
+    let img=null
+    let imgCover=null
     if(req.files['myImage'][0]){
     let img = req.files['myImage'][0];
     }
