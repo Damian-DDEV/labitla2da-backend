@@ -42,8 +42,12 @@ let moviesController = {
   editMovie: async (req, res, next) => {
     let movie = req.body;
     let id = req.params;
+    if(req.files['myImage'][0]){
     let img = req.files['myImage'][0];
-    let imgCover = req.files['myImage2'][0];
+    }
+    if(req.files['myImage2'][0]){
+    let img = req.files['myImage2'][0];
+    }
     try {
       let movieEdited = await moviesCore.editMovie(movie, id, img,imgCover);
       if (movieEdited) return res.status(200).send(`The ${movie.name} movie was successfully modified`);
