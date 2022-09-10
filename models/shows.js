@@ -19,7 +19,16 @@ module.exports = (sequelize, DataTypes) => {
     date_time: DataTypes.DATE,
     tickets_availables: DataTypes.INTEGER,
     id_movie: DataTypes.INTEGER,
-    id_theaters: DataTypes.INTEGER
+    id_theaters: DataTypes.INTEGER,
+    format_movie: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        notEmpty: {
+          msg: "The format_movie field cannot be empty.",
+        },
+      },
+    },
   }, {
     sequelize,
     modelName: 'Shows',
