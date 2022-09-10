@@ -32,6 +32,19 @@ const moviesCore = {
   },*/
 
   createMovie: async (movie, img) => {
+    if(imgCover){
+      const options = {
+        use_filename: false,
+        unique_filename: false,
+        overwrite: true,
+      };
+      try {
+        const result = await cloudinary.uploader.upload(imgCover.path, options);
+        movie.path_img_banner = ("https://res.cloudinary.com/clawgames/image/upload/"+result.public_id)
+      } catch (error) {
+        console.error(error);
+      }
+    }
     if(img){
 
       const options = {
@@ -44,19 +57,6 @@ const moviesCore = {
         console.log(result);
         movie.path_img = ("https://res.cloudinary.com/clawgames/image/upload/"+result.public_id)
         console.log(movie.path_img)
-      } catch (error) {
-        console.error(error);
-      }
-    }
-    if(imgCover){
-      const options = {
-        use_filename: false,
-        unique_filename: false,
-        overwrite: true,
-      };
-      try {
-        const result = await cloudinary.uploader.upload(imgCover.path, options);
-        movie.path_img_banner = ("https://res.cloudinary.com/clawgames/image/upload/"+result.public_id)
       } catch (error) {
         console.error(error);
       }
