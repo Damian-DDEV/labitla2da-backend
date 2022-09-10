@@ -44,6 +44,8 @@ let moviesController = {
     let id = req.params;
     let img=null
     let imgCover=null
+    console.log(req.files['myImage'])
+    console.log(req.files['myImage']!==undefined)
     if(req.files['myImage']!==undefined){
     img = req.files['myImage'][0];
     }
