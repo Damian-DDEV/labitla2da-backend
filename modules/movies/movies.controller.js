@@ -44,10 +44,10 @@ let moviesController = {
     let id = req.params;
     let img=null
     let imgCover=null
-    if(typeof req.files['myImage'][0]!== 'undefined'){
+    if(req.files['myImage']!==undefined){
     img = req.files['myImage'][0];
     }
-    if(typeof req.files['myImage2'][0]!== 'undefined'){
+    if(req.files['myImage2']!==undefined){
     imgCover = req.files['myImage2'][0];
     }
     try {
