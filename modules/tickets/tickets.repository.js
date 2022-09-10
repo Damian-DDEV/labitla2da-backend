@@ -6,7 +6,7 @@ const ticketsRepository = {
     return tickets;
   },
   getTicketsByDni: async (dni) => {
-    const tickets = Model.Tickets.findAll({  
+    const tickets = Model.Tickets.findAll({  order: [["id", "DESC"]],
     where: { dni:dni.dni },include: { all: true, nested: true }})
     return tickets;
   },
