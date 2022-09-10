@@ -12,13 +12,15 @@ const showsRepository = {
       date_time:{
         [Op.gt]: Sequelize.cast(new Date(), "datetime")
       }
-    }
+    },
+    include: { all: true, nested: true }
   });
     return shows;
   },
 
   getShow: async (id) => {
-    const show = await Model.Shows.findOne({ where: { id } });
+    const show = await Model.Shows.findOne({ where: { id },
+      include: { all: true, nested: true } });
     return show;
   },
 

@@ -16,8 +16,7 @@ const ticketsRepository = {
     return ticket;
   },
 
-  createTicket: async (ticket) => {
-    let showEdited = await Model.Shows.findByPk(ticket.id_show);
+  createTicket: async (ticket,showEdited) => {
     if (showEdited){ 
         showEdited.tickets_availables=showEdited.tickets_availables-ticket.quantity
         showEdited.save();

@@ -1,5 +1,6 @@
 const ticketsRepository = require('./tickets.repository');
 const transporter = require ('../../config/email');
+const Model = require("../../models/");
 
 
 const ticketsCore = {
@@ -18,15 +19,18 @@ const ticketsCore = {
         return ticket;
     },
     createTicket: async (ticket) => {
-        const ticketCreated = await ticketsRepository.createTicket(ticket);
+        let showEdited = await Model.Shows.findByPk(ticket.id_show, {include: { all: true, nested: true }})
+        const ticketCreated = await ticketsRepository.createTicket(ticket,showEdited);
+        showEdited.dataValues.date_time=showEdited.dataValues.date_time
+        let time=showEdited.dataValues.date_time.toLocaleTimeString("es-ES").slice(0,5)
+        let date=showEdited.dataValues.date_time.toLocaleDateString("es-ES")
         if (ticketCreated) {
             const mailOptions = {
                 from: "Remitente",
                 to: `${ticket.email}`,
                 subject: "Enviado",
-                text: "HI"
+                text: "Tu codigo para la funcion de las "+time+", el dia "+date+", para la pelicula "+showEdited.movies.name+", es "+ticketCreated.code+", recuerda llevar tu dni para canjear la entrada al cine.     ¡¡¡Te esperamos!!!"
             }
-
             transporter.sendMail(mailOptions, (err, info) => {
                 if (err) {
                     console.log('error');
