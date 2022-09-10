@@ -58,6 +58,9 @@ module.exports = (sequelize, DataTypes) => {
       path_img: {
         type: DataTypes.STRING
       },
+      path_img_banner: {
+        type: DataTypes.STRING
+      },
       id_usr: {
         type: DataTypes.INTEGER,
         allowNull: false,

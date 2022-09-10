@@ -30,7 +30,6 @@ let moviesController = {
   createMovie: async (req, res, next) => {
     let movie = req.body;
     let img = req.file;
-
     try {
       let movieCreated = await moviesCore.createMovie(movie, img);
       return res.status(201).send(movieCreated);
@@ -42,10 +41,10 @@ let moviesController = {
   editMovie: async (req, res, next) => {
     let movie = req.body;
     let id = req.params;
-    let img = req.file;
-    console.log(img)
+    let img = req.files['myImage'][0];
+    let imgCover = req.files['myImage2'][0];
     try {
-      let movieEdited = await moviesCore.editMovie(movie, id, img);
+      let movieEdited = await moviesCore.editMovie(movie, id, img,imgCover);
       if (movieEdited) return res.status(200).send(`The ${movie.name} movie was successfully modified`);
       else return res.status(404).send(`Movie not found`);
     } catch (error) {
