@@ -46,7 +46,7 @@ let moviesController = {
     let img = req.files['myImage'][0];
     }
     if(req.files['myImage2'][0]){
-    let img = req.files['myImage2'][0];
+    let imgCover = req.files['myImage2'][0];
     }
     try {
       let movieEdited = await moviesCore.editMovie(movie, id, img,imgCover);
