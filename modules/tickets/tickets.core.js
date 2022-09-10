@@ -25,7 +25,7 @@ const ticketsCore = {
                 from: "Remitente",
                 to: `${ticket.email}`,
                 subject: "Enviado",
-                text: "Tu codigo para la pelicula "+ticketCreated.shows.movie.name+ " es "+ticketCreated.code
+                text: "Tu codigo para la pelicula "+ticketCreated.shows.movies.name+ " es "+ticketCreated.code
             }
 
             transporter.sendMail(mailOptions, (err, info) => {
