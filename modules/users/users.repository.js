@@ -31,15 +31,16 @@ const UsersRepository = {
   },
 
   changePassword: async (passind) => {
-    return Model.Users.findOne({
-      where: {id : passind.id}
-    });  
+    let id = passind.id.toString()
+    console.log(id)
+    return Model.Users.findByPk( id );  
   },
 
   savenewPass: async (passnidnew) => {
     const { id } = passnidnew;
-    const existUser = await Model.Users.findOne({ where: { id:id } });
-    if (existUser) await Model.Users.update({password: passnidnew.passnew},{where: id });
+    let existUser = await Model.Users.findOne({ where: { id:id } });
+    existUser.password=passnidnew.passnew
+    if (existUser) await existUser.save();
   },
 
   editUser: async (id, user) => {
