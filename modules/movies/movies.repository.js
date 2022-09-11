@@ -12,7 +12,7 @@ const moviesRepository = {
       }
       let movies = await Model.Movies.findAll({
         where:conditions,
-        include: ["genre", "director"]
+        include: { all: true, nested: true }
       });
       return movies;
   },

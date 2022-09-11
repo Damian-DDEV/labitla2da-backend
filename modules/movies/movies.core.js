@@ -42,7 +42,6 @@ const moviesCore = {
         const result = await cloudinary.uploader.upload(imgCover.path, options);
         movie.path_img_banner = (result.public_id)
       } catch (error) {
-        console.error(error);
       }
     }
     if(img){
@@ -54,11 +53,8 @@ const moviesCore = {
       };
       try {
         const result = await cloudinary.uploader.upload(img.path, options);
-        console.log(result);
         movie.path_img = ("https://res.cloudinary.com/clawgames/image/upload/"+result.public_id)
-        console.log(movie.path_img)
       } catch (error) {
-        console.error(error);
       }
     }
     const movieCreated = await moviesRepository.createMovie(movie);
