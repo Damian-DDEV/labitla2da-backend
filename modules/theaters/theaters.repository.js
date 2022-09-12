@@ -3,7 +3,7 @@ const Model = require("../../models");
 const theatersRepository = {
   getTheaters: async () => {
     const theaters = Model.Theaters.findAll({
-      include: ["shows"]
+      include: ["shows"],
     });
     return theaters;
   },
@@ -20,7 +20,8 @@ const theatersRepository = {
 
   editTheater: async (theater, id) => {
     const getTheater = await Model.Theaters.findOne(id);
-    if (getTheater) return await Model.Theaters.update(theater, { where: { id } });
+    if (getTheater)
+      return await Model.Theaters.update(theater, { where: { id } });
   },
 
   delTheater: async (id) => {

@@ -71,7 +71,7 @@ const usersController = {
   },
 
   delUser: async (req, res, next) => {
-    const id = req.body.id || req.params;
+    const id = req.params.id;
     try {
       const delUser = await userCore.delUser(id);
       if (delUser)
@@ -109,7 +109,7 @@ const usersController = {
 
   refreshToken: async (req, res, next) => {
     const token = req.headers["token"];
-
+    console.log(token)
     try {
       const refToken = await userCore.refresh(token);
       if (!refToken) {

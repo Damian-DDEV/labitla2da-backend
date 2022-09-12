@@ -1,5 +1,4 @@
 "use strict";
-
 module.exports = {
   async up(queryInterface, Sequelize) {
     await queryInterface.createTable("users", {
@@ -9,7 +8,7 @@ module.exports = {
         autoIncrement: true,
       },
       username: {
-        type: Sequelize.STRING,
+        type: Sequelize.STRING(20),
         unique: true,
         allowNull: false,
         isAlpha: false,
@@ -20,7 +19,7 @@ module.exports = {
         },
       },
       rol: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.INTEGER(1),
         validate: {
           notEmpty: {
             msg: "The rol field cannot be empty.",
@@ -29,7 +28,7 @@ module.exports = {
       },
 
       firstname: {
-        type: Sequelize.STRING,
+        type: Sequelize.STRING(20),
         allowNull: false,
         validate: {
           notEmpty: {
@@ -39,7 +38,7 @@ module.exports = {
       },
 
       lastname: {
-        type: Sequelize.STRING,
+        type: Sequelize.STRING(20),
         allowNull: false,
         validate: {
           notEmpty: {
@@ -51,7 +50,7 @@ module.exports = {
         type: Sequelize.STRING
       },
       email: {
-        type: Sequelize.STRING,
+        type: Sequelize.STRING(50),
         allowNull: false,
         unique: {
           msg: "The email is already in use",
@@ -64,7 +63,7 @@ module.exports = {
         },
       },
       dni: {
-        type: Sequelize.STRING,
+        type: Sequelize.STRING(15),
         unique: "The dni/id is already in use",
         allowNull: false,
         validate: {
@@ -79,7 +78,7 @@ module.exports = {
       updatedAt: {
         type: Sequelize.DATE,
       },
-      deleteAt: {
+      deletedAt: {
         type: Sequelize.DATE,
         paranoid: true
       }
@@ -87,11 +86,6 @@ module.exports = {
   },
 
   async down(queryInterface, Sequelize) {
-    /**
-     * Add reverting commands here.
-     *
-     * Example:
-     * await queryInterface.dropTable('users');
-     */
+    await queryInterface.dropTable('users');
   },
 };

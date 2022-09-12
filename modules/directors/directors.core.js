@@ -8,8 +8,8 @@ const directorsCore = {
         return directors;
     },
 
-    getDirector: async () => {
-        const director = await directorsRepository.getDirector();
+    getDirector: async (id) => {
+        const director = await directorsRepository.getDirector(id);
         return director;
     },
     createDirector: async (director) => {

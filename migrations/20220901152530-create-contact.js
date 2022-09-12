@@ -10,12 +10,30 @@ module.exports = {
       },
       textarea: {
         type: Sequelize.TEXT,
+        allowNull: false,
+        validate: {
+          notEmpty: {
+            msg: "The textarea field cannot be empty.",
+          },
+        },
       },
       phone_number: {
         type: Sequelize.INTEGER,
+        allowNull: false,
+        validate: {
+          notEmpty: {
+            msg: "The phone_number field cannot be empty.",
+          },
+        },
       },
       email: {
-        type: Sequelize.STRING,
+        type: Sequelize.STRING(50),
+        allowNull: false,
+        validate: {
+          notEmpty: {
+            msg: "The email field cannot be empty.",
+          },
+        },
       },
       createdAt: {
         type: Sequelize.DATE,
@@ -23,7 +41,7 @@ module.exports = {
       updatedAt: {
         type: Sequelize.DATE,
       },
-      deleteAt: {
+      deletedAt: {
         type: Sequelize.DATE,
         paranoid: true
       }

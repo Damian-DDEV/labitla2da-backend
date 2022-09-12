@@ -1,6 +1,7 @@
 const ticketsCore = require("./tickets.core");
 
 const ticketsController = {
+
   getTickets: async (req, res, next) => {
     try {
       const getTickets = await ticketsCore.getTickets();
@@ -10,6 +11,7 @@ const ticketsController = {
       return next(error);
     }
   },
+
   getTicketsByDni: async (req, res, next) => {
     const dni = req.params;
     try {
@@ -22,7 +24,7 @@ const ticketsController = {
   },
 
   getTicket: async (req, res, next) => {
-    const id = req.params;
+    const id = req.params.id;
     try {
       const getTicket = await ticketsCore.getTicket(id);
       if(getTicket) return res.status(200).send(getTicket);
@@ -36,6 +38,7 @@ const ticketsController = {
     const ticket = req.body;
     try {
         const ticketCreated = await ticketsCore.createTicket(ticket);
+        console.log(ticketCreated)
         return res.status(201).send(ticketCreated);
     } catch (error) {
         return next(error);
@@ -55,7 +58,7 @@ const ticketsController = {
   },
 
   delTicket: async (req, res, next) => {
-    const id = req.params;
+    const id = req.params.id;
     try {
       const delTicket = await ticketsCore.delTicket(id);
       if (delTicket) return res.status(200).send(`Ticket successfully removed`);

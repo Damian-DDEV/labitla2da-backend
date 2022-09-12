@@ -3,11 +3,8 @@ const moviesCore = require("./movies.core");
 let moviesController = {
   getMovies: async (req, res, next) => {
     try {
-      let id_genre=null
-      if(req.query.id_genre){
-      id_genre= req.query.id_genre;
-      }
       let words = req.query.title;
+      let id_genre = req.query.id_genre;
       let getMovies = await moviesCore.getMovies(words, id_genre);
       if (getMovies) return res.status(200).send(getMovies);
       else return res.status(404).send(`No movies found`)
@@ -29,10 +26,9 @@ let moviesController = {
 
   createMovie: async (req, res, next) => {
     let movie = req.body;
-    let img = req.files['myImage'][0];
-    let imgCover = req.files['myImage2'][0];
+    let img = req.file;
     try {
-      let movieCreated = await moviesCore.createMovie(movie, img, imgCover);
+      let movieCreated = await moviesCore.createMovie(movie, img);
       return res.status(201).send(movieCreated);
     } catch (error) {
       return next(error);
@@ -42,10 +38,9 @@ let moviesController = {
   editMovie: async (req, res, next) => {
     let movie = req.body;
     let id = req.params;
-    let img = req.files['myImage'][0];
-    let imgCover = req.files['myImage2'][0];
+    let img = req.file;
     try {
-      let movieEdited = await moviesCore.editMovie(movie, id, img,imgCover);
+      let movieEdited = await moviesCore.editMovie(movie, id, img);
       if (movieEdited) return res.status(200).send(`The ${movie.name} movie was successfully modified`);
       else return res.status(404).send(`Movie not found`);
     } catch (error) {

@@ -12,7 +12,7 @@ module.exports = {
           duration: "03:00:00",
           id_genre: 1,
           id_director: 1,
-          path_img: "images/2e7f07ff2299b2bf1911f07f4c57cd70.jpeg",
+          path_img: "public/images/2e7f07ff2299b2bf1911f07f4c57cd70.jpeg",
           format_movie: "2D",
           id_usr: 1,
         },
@@ -23,7 +23,7 @@ module.exports = {
           duration: "02:00:00",
           id_genre: 1,
           id_director: 1,
-          path_img: "images/dab79a89f7b35b14b28999dea590c0c1.jpeg",
+          path_img: "public/images/dab79a89f7b35b14b28999dea590c0c1.jpeg",
           format_movie: "2D",
           id_usr: 1,
         },
@@ -34,7 +34,7 @@ module.exports = {
           duration: "01:58:00",
           id_genre: 1,
           id_director: 1,
-          path_img: "images/9668b6289b489191aab077f9653b45a8.jpeg",
+          path_img: "public/images/9668b6289b489191aab077f9653b45a8.jpeg",
           format_movie: "2D",
           id_usr: 1,
         },
@@ -45,7 +45,7 @@ module.exports = {
           duration: "02:20:00",
           id_genre: 1,
           id_director: 1,
-          path_img: "images/29056100dcb457c51990c4f7246ec168.jpeg",
+          path_img: "public/images/29056100dcb457c51990c4f7246ec168.jpeg",
           format_movie: "2D",
           id_usr: 1,
         },
@@ -56,7 +56,7 @@ module.exports = {
           duration: "03:00:00",
           id_genre: 1,
           id_director: 1,
-          path_img: "images/2a52a14490e2a072fd8027de7a32f98a.jpeg",
+          path_img: "public/images/2a52a14490e2a072fd8027de7a32f98a.jpeg",
           format_movie: "2D",
           id_usr: 1,
         },
@@ -67,7 +67,7 @@ module.exports = {
           duration: "03:00:00",
           id_genre: 1,
           id_director: 1,
-          path_img: "images/f4525ab8da75bb82e0bfc4d8c2ee1a18.jpeg",
+          path_img: "public/images/f4525ab8da75bb82e0bfc4d8c2ee1a18.jpeg",
           format_movie: "2D",
           id_usr: 1,
         },
@@ -78,7 +78,7 @@ module.exports = {
           duration: "03:00:00",
           id_genre: 1,
           id_director: 1,
-          path_img: "images/a2950a7a047cc0d9137d80aa10ff3099.jpeg",
+          path_img: "public/images/a2950a7a047cc0d9137d80aa10ff3099.jpeg",
           format_movie: "2D",
           id_usr: 1,
         },
@@ -89,7 +89,7 @@ module.exports = {
           duration: "03:00:00",
           id_genre: 1,
           id_director: 1,
-          path_img: "images/9152ca373b279688497bd8bc1cc212e0.jpeg",
+          path_img: "public/images/9152ca373b279688497bd8bc1cc212e0.jpeg",
           format_movie: "2D",
           id_usr: 1,
         },
@@ -100,7 +100,7 @@ module.exports = {
           duration: "03:00:00",
           id_genre: 1,
           id_director: 1,
-          path_img: "images/eebc2bf5748b255a0c1e0a777312d12a.jpeg",
+          path_img: "public/images/eebc2bf5748b255a0c1e0a777312d12a.jpeg",
           format_movie: "2D",
           id_usr: 1,
         },
@@ -111,7 +111,7 @@ module.exports = {
           duration: "03:00:00",
           id_genre: 1,
           id_director: 1,
-          path_img: "images/fdde08626f2441810c68294151cf7c67.jpeg",
+          path_img: "public/images/fdde08626f2441810c68294151cf7c67.jpeg",
           format_movie: "2D",
           id_usr: 1,
         },
@@ -121,11 +121,6 @@ module.exports = {
   },
 
   async down(queryInterface, Sequelize) {
-    /**
-     * Add commands to revert seed here.
-     *
-     * Example:
-     * await queryInterface.bulkDelete('People', null, {});
-     */
+     await queryInterface.bulkDelete('movies', null, {});
   },
 };

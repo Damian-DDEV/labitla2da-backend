@@ -21,9 +21,9 @@ const ticketsCore = {
     createTicket: async (ticket) => {
         let showEdited = await Model.Shows.findByPk(ticket.id_show, {include: { all: true, nested: true }})
         const ticketCreated = await ticketsRepository.createTicket(ticket,showEdited);
-        showEdited.dataValues.date_time=showEdited.dataValues.date_time
-        let time=showEdited.dataValues.date_time.toLocaleTimeString("es-ES").slice(0,5)
-        let date=showEdited.dataValues.date_time.toLocaleDateString("es-ES")
+        showEdited.dataValues.date_time = showEdited.dataValues.date_time
+        let time = showEdited.dataValues.date_time.toLocaleTimeString("es-ES").slice(0,5)
+        let date = showEdited.dataValues.date_time.toLocaleDateString("es-ES")
         if (ticketCreated) {
             const mailOptions = {
                 from: "Remitente",
@@ -33,9 +33,9 @@ const ticketsCore = {
             }
             transporter.sendMail(mailOptions, (err, info) => {
                 if (err) {
-                    console.log('error');
+                    console.error('error');
                 } else {
-                    return ticketCreated;
+                    return ticketCreated.toJSON();
                 }
             })
         }

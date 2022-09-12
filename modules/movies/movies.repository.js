@@ -3,36 +3,41 @@ const { Op } = require("sequelize");
 
 const moviesRepository = {
   getMovies: async (words, id_genre) => {
-      let conditions  = [{}];
-      if(id_genre!=null){
-        conditions.push({id_genre:id_genre});
-        }
-      if(words!=null || words==""){
-        conditions.push({name: {[Op.substring]:words}})
-      }
-      let movies = await Model.Movies.findAll({
-        where:conditions,
-        include: ["genre", "director"]
-      });
-      return movies;
+    const movies = await Model.Movies.findAll({
+      where: {
+        [Op.or]: [
+          {
+            name: {
+              [Op.substring]: words,
+            },
+          },
+          {
+            id_genre: {
+              [Op.eq]: id_genre,
+            },
+          },
+        ],
+      },
+      include: ["genre", "director"],
+    });
+    return movies;
   },
   getMovie: async (id) => {
-    const movie = await Model.Movies.findOne({ 
+    const movie = await Model.Movies.findOne({
       where: id,
-      include: ["genre", "director"]
+      include: ["genre", "director"],
     });
     return movie;
   },
 
   createMovie: async (movie) => {
-      const movieCreated = await Model.Movies.create(movie);
-      return movieCreated;
+    const movieCreated = await Model.Movies.create(movie);
+    return movieCreated;
   },
 
   editMovie: async (movie, id, img) => {
     const movieEdited = await Model.Movies.findOne(id);
     if (movieEdited) return Model.Movies.update(movie, { where: id });
-    
   },
 
   delMovie: async (id) => {

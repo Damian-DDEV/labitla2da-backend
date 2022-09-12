@@ -9,26 +9,48 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       date_time: {
-        type: Sequelize.DATE
+        type: Sequelize.DATE,
+        allowNull: false,
+        validate: {
+          notEmpty: {
+            msg: "The date_time field cannot be empty.",
+          },
+        },
       },
       tickets_availables: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        validate: {
+          notEmpty: {
+            msg: "The tickets_availables field cannot be empty.",
+          },
+        },
       },
       id_movie: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        validate: {
+          notEmpty: {
+            msg: "The id_movie field cannot be empty.",
+          },
+        },
       },
       id_theaters: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        validate: {
+          notEmpty: {
+            msg: "The id_theaters field cannot be empty.",
+          },
+        },
       },
       createdAt: {
-        allowNull: false,
         type: Sequelize.DATE
       },
       updatedAt: {
-        allowNull: false,
         type: Sequelize.DATE
       },
-      deleteAt: {
+      deletedAt: {
         type: Sequelize.DATE,
         paranoid: true
       }

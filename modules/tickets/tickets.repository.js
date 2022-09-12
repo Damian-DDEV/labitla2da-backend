@@ -18,8 +18,8 @@ const ticketsRepository = {
 
   createTicket: async (ticket,showEdited) => {
     if (showEdited){ 
-        showEdited.tickets_availables=showEdited.tickets_availables-ticket.quantity
-        showEdited.save();
+        showEdited.tickets_availables = showEdited.tickets_availables-ticket.quantity
+        await showEdited.save();
     };
     const ticketCreated = await Model.Tickets.create(ticket);
     return ticketCreated;

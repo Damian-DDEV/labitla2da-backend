@@ -9,20 +9,30 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       id_show: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        validate: {
+          notEmpty: {
+            msg: "The id_show field cannot be empty.",
+          },
+        },
       },
       name: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
+        allowNull: false,
+        validate: {
+          notEmpty: {
+            msg: "The name field cannot be empty.",
+          },
+        },
       },
       createdAt: {
-        allowNull: false,
         type: Sequelize.DATE
       },
       updatedAt: {
-        allowNull: false,
         type: Sequelize.DATE
       },
-      deleteAt: {
+      deletedAt: {
         type: Sequelize.DATE,
         paranoid: true
       }

@@ -9,22 +9,58 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       id_show: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        validate: {
+          notEmpty: {
+            msg: "The id_show field cannot be empty.",
+          },
+        },
       },
       quantity: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        validate: {
+          notEmpty: {
+            msg: "The quantity field cannot be empty.",
+          },
+        },
       },
       code: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
+        allowNull: false,
+        validate: {
+          notEmpty: {
+            msg: "The code field cannot be empty.",
+          },
+        },
       },
       status: {
-        type: Sequelize.BOOLEAN
+        type: Sequelize.BOOLEAN,
+        allowNull: false,
+        validate: {
+          notEmpty: {
+            msg: "The status field cannot be empty.",
+          },
+        },
       },
       email: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
+        allowNull: false,
+        validate: {
+          notEmpty: {
+            msg: "The email field cannot be empty.",
+          },
+        },
       },
       dni: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
+        allowNull: false,
+        validate: {
+          notEmpty: {
+            msg: "The dni/id field cannot be empty.",
+          },
+        },
       },
       createdAt: {
         type: Sequelize.DATE,
@@ -32,7 +68,7 @@ module.exports = {
       updatedAt: {
         type: Sequelize.DATE,
       },
-      deleteAt: {
+      deletedAt: {
         type: Sequelize.DATE,
         paranoid: true
       }

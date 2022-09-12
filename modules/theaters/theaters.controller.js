@@ -12,7 +12,7 @@ const theatersController = {
   },
 
   getTheater: async (req, res, next) => {
-    const id = req.params;
+    const id = req.params.id;
     try {
       const getTheater = await theatersCore.getTheater(id);
       if (getTheater) return res.status(200).send(getTheater);
@@ -22,13 +22,13 @@ const theatersController = {
     }
   },
 
-  createTheater: async (req,res,next) => {
+  createTheater: async (req, res, next) => {
     const theater = req.body;
     try {
-        const theaterCreated = await theatersCore.createTheater(theater);
-        return res.status(201).send(theaterCreated);
+      const theaterCreated = await theatersCore.createTheater(theater);
+      return res.status(201).send(theaterCreated);
     } catch (error) {
-        return next(error);
+      return next(error);
     }
   },
 
@@ -37,7 +37,10 @@ const theatersController = {
     const id = req.params;
     try {
       const theaterEdited = await theatersCore.editTheater(theater, id);
-      if (theaterEdited) return res.status(200).send(`The theater has been successfully modified`);
+      if (theaterEdited)
+        return res
+          .status(200)
+          .send(`The theater has been successfully modified`);
       else return res.status(404).send(`The movie theater was not found`);
     } catch (error) {
       return next(error);
@@ -45,11 +48,12 @@ const theatersController = {
   },
 
   delTheater: async (req, res, next) => {
-    const id = req.params
+    const id = req.params.id;
     try {
       const delTheater = await theatersCore.delTheater(id);
-      if (delTheater) return res.status(200).send(`Theater successfully removed`);
-      else return res.status(404).send(`No movie theaters found`)
+      if (delTheater)
+        return res.status(200).send(`Theater successfully removed`);
+      else return res.status(404).send(`No movie theaters found`);
     } catch (error) {
       return next(error);
     }

@@ -2,14 +2,12 @@
 const { Model } = require("sequelize");
 module.exports = (sequelize, DataTypes) => {
   class Movies extends Model {
-    /**
-     * Helper method for defining associations.
-     * This method is not a part of Sequelize lifecycle.
-     * The `models/index` file will call this method automatically.
-     */
     static associate(models) {
-      Movies.belongsTo(models.Genres, {as: "genre", foreignKey: "id_genre"});
-      Movies.belongsTo(models.Directors, {as: "director", foreignKey: "id_director"});
+      Movies.belongsTo(models.Genres, { as: "genre", foreignKey: "id_genre" });
+      Movies.belongsTo(models.Directors, {
+        as: "director",
+        foreignKey: "id_director",
+      });
     }
   }
   Movies.init(
@@ -55,11 +53,20 @@ module.exports = (sequelize, DataTypes) => {
           },
         },
       },
+      format_movie: {
+        type: DataTypes.STRING(5),
+        allowNull: false,
+        validate: {
+          notEmpty: {
+            msg: "The format_movie field cannot be empty.",
+          },
+        },
+      },
       path_img: {
-        type: DataTypes.STRING
+        type: DataTypes.STRING,
       },
       path_img_banner: {
-        type: DataTypes.STRING
+        type: DataTypes.STRING,
       },
       id_usr: {
         type: DataTypes.INTEGER,
@@ -69,13 +76,13 @@ module.exports = (sequelize, DataTypes) => {
             msg: "The id_usr field cannot be empty.",
           },
         },
-      }
+      },
     },
     {
       sequelize,
       modelName: "Movies",
       paranoid: true,
-      deletedAt: 'deleteAt'
+      deletedAt: "deletedAt",
     }
   );
   return Movies;

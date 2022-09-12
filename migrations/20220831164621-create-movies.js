@@ -35,7 +35,7 @@ module.exports = {
         },
       },
       id_genre: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.INTEGER(4),
         allowNull: false,
         validate: {
           notEmpty: {
@@ -44,7 +44,7 @@ module.exports = {
         },
       },
       id_director: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.INTEGER(4),
         allowNull: false,
         validate: {
           notEmpty: {
@@ -53,10 +53,13 @@ module.exports = {
         },
       },
       path_img: {
+        type: Sequelize.STRING,
+      },
+      path_img_banner: {
         type: Sequelize.STRING
       },
       format_movie: {
-        type: Sequelize.STRING,
+        type: Sequelize.STRING(5),
         allowNull: false,
         validate: {
           notEmpty: {
@@ -79,7 +82,7 @@ module.exports = {
       updatedAt: {
         type: Sequelize.DATE,
       },
-      deleteAt: {
+      deletedAt: {
         type: Sequelize.DATE,
         paranoid: true
       }

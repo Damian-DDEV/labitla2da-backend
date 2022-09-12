@@ -8,8 +8,8 @@ const showsCore = {
         return shows;
     },
 
-    getShow: async () => {
-        const show = await showsRepository.getShow();
+    getShow: async (id) => {
+        const show = await showsRepository.getShow(id);
         return show;
     },
 

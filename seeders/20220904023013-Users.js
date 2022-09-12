@@ -1,5 +1,3 @@
-const { DateTime } = require("luxon");
-
 ("use strict");
 
 module.exports = {
@@ -18,7 +16,7 @@ module.exports = {
           dni: 12345678,
           createdAt: null,
           updatedAt: null,
-          deleteAt: null,
+          deletedAt: null,
         },
         {
           username: "cliente",
@@ -31,7 +29,7 @@ module.exports = {
           dni: 12345678,
           createdAt: null,
           updatedAt: null,
-          deleteAt: null,
+          deletedAt: null,
         },
       ],
       {}

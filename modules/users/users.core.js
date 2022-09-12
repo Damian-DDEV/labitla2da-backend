@@ -84,14 +84,13 @@ const userCore = {
   },
 
   register: async (user) => {
-    //Hasheo la clave utilizando bcrypt, para esto utilizo la funcion hashSync, enviandole la pass y la cantidad de "Rounds"
     user.password = bcrypt.hashSync(user.password, 10);
     const newuser = await UsersRepository.register(user);
     return newuser;
   },
 
   refresh: async (token) => {
-    //TODO: FALTA HANDLING DE INVALID TOKEN
+    console.log('TOKEN',token)
     const verifyToken = jwt.verify(token, AuthJWT.refresh);
     const { id_user } = verifyToken;
     const getUser = await UsersRepository.refresh(id_user);

@@ -7,7 +7,7 @@ const contactRepository = {
   },
 
   getContact: async (id) => {
-    const contact = await Model.Contact.findOne({ where: {id} });
+    const contact = await Model.Contact.findOne({ where: { id } });
     return contact;
   },
 
@@ -22,7 +22,7 @@ const contactRepository = {
   },
 
   delContact: async (id) => {
-    const delContact = await Model.Contact.destroy({ where:  {id} });
+    const delContact = await Model.Contact.destroy({ where: { id } });
     return delContact;
   },
 };

@@ -9,10 +9,22 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       name: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
+        allowNull: false,
+        validate: {
+          notEmpty: {
+            msg: "The name field cannot be empty.",
+          },
+        },
       },
       lastname: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
+        allowNull: false,
+        validate: {
+          notEmpty: {
+            msg: "The lastname field cannot be empty.",
+          },
+        },
       },
       createdAt: {
         type: Sequelize.DATE,
@@ -20,7 +32,7 @@ module.exports = {
       updatedAt: {
         type: Sequelize.DATE,
       },
-      deleteAt: {
+      deletedAt: {
         type: Sequelize.DATE,
         paranoid: true
       }

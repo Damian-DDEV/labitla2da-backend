@@ -46,7 +46,7 @@ const contactController = {
   },
 
   delContact: async (req, res, next) => {
-    const id = req.params;
+    const id = req.params.id;
     try {
       const delContact = await contactCore.delContact(id);
       if (delContact) return res.status(200).send(delContact);
