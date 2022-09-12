@@ -160,20 +160,14 @@ const ticketsCore = {
                         <h1>Cinemaland <span>${time,date}</span></h1>
                         <div class="title">
                             <span>Película</span>
-                          <h2>Señor de los anillos</h2>
+                          <h2>${showEdited.name}</h2>
                         </div>
                         <div class="name">
-                        <span>NOMBRE Y APELLIDO</span>
-                          <h2>Fulano de tal</h2>
                           <span>DNI</span>
-                          <h2>12345678</h2>
+                          <h2>${showEdited.dni}</h2>
                         </div>
                       </div>
                       <div class="card cardRight">
-                        <div class="number">
-                          <h3>156</h3>
-                          <span>Asiento</span>
-                        </div>
                         <div class="barcode"></div>
                       </div>
                     </div>
