@@ -29,7 +29,7 @@ const ticketsCore = {
                 from: "Remitente",
                 to: `${ticket.email}`,
                 subject: "Enviado",
-                text: "Tu codigo para la funcion de las "+time+", el dia "+date+", Sala "+showEdited.theaters.name+" para la pelicula "+showEdited.movies.name+", es "+ticketCreated.code+", recuerda llevar tu dni para canjear la entrada al cine.     ¡¡¡Te esperamos!!!"
+                text: "Tu código para la función de las "+time+", el dia "+date+", Sala "+showEdited.theaters.name+" para la película "+showEdited.movies.name+", es "+ticketCreated.code+", recuerda llevár tú dni para canjear la entrada al cine.     ¡¡¡Te esperamos!!!"
             }
             transporter.sendMail(mailOptions, (err, info) => {
                 if (err) {
