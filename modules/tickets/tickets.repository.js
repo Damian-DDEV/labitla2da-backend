@@ -6,8 +6,11 @@ const ticketsRepository = {
     return tickets;
   },
   getTicketsByDni: async (dni) => {
-    const tickets = Model.Tickets.findAll({  order: [["id", "DESC"]],
-    where: { dni:dni.dni },include: { all: true, nested: true }})
+    const tickets = Model.Tickets.findAll({
+      order: [["id", "DESC"]],
+      where: { dni: dni.dni },
+      include: { all: true, nested: true },
+    });
     return tickets;
   },
 
@@ -16,13 +19,27 @@ const ticketsRepository = {
     return ticket;
   },
 
-  createTicket: async (ticket,showEdited) => {
-    if (showEdited){ 
-        showEdited.tickets_availables = showEdited.tickets_availables-ticket.quantity
-        await showEdited.save();
-    };
+  createTicket: async (ticket, showEdited) => {
+    if (showEdited) {
+      showEdited.tickets_availables =
+        showEdited.tickets_availables - ticket.quantity;
+      await showEdited.save();
+    }
     const ticketCreated = await Model.Tickets.create(ticket);
-    return ticketCreated;
+    if (ticketCreated) {
+      const movie = await Model.Movies.findOne({
+        where: { id: ticketCreated.id_show },
+      });
+      const theater = await Model.Theaters.findOne({
+        where: { id: ticketCreated.id_show },
+      });
+      const ticket = {
+        dni: ticketCreated.dni,
+        movie: movie.name,
+        theater: theater.name,
+      };
+      return ticket;
+    }
   },
 
   editTicket: async (ticket, id) => {
