@@ -38,6 +38,15 @@ module.exports = (sequelize, DataTypes) => {
           },
         },
       },
+      year: {
+        type: DataTypes.TEXT,
+        allowNull: false,
+        validate: {
+          notEmpty: {
+            msg: "The year field cannot be empty.",
+          },
+        },
+      },
       duration: {
         type: DataTypes.TIME,
         allowNull: false,
