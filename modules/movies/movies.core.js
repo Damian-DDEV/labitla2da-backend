@@ -20,7 +20,6 @@ const moviesCore = {
 
   createMovie: async (movie, img) => {
     //Pasamos a el mimetype que reciba desde el front, para que lo guarde con el mismo.
-    console.log(movie, img)
     if(img){
       fs.renameSync(img.path, img.path+'.'+img.mimetype.split('/')[1]);
       //Enviamos la ruta a la db para cuando haga el get.

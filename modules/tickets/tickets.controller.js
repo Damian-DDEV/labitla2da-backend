@@ -38,7 +38,6 @@ const ticketsController = {
     const ticket = req.body;
     try {
         const ticketCreated = await ticketsCore.createTicket(ticket);
-        console.log(ticketCreated)
         return res.status(201).send(ticketCreated);
     } catch (error) {
         return next(error);

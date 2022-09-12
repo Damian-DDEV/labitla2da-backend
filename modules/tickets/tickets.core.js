@@ -24,7 +24,6 @@ const ticketsCore = {
         showEdited.dataValues.date_time = showEdited.dataValues.date_time;
         let time = showEdited.dataValues.date_time.toLocaleTimeString("es-ES").slice(0,5);
         let date = showEdited.dataValues.date_time.toLocaleDateString("es-ES");
-        console.log(ticketCreated)
         if (ticketCreated) {
             const mailOptions = {
                 from: "Remitente",
@@ -187,7 +186,7 @@ const ticketsCore = {
             }
             transporter.sendMail(mailOptions, (err, info) => {
                 if (err) {
-                    console.log('error');
+                    console.error('error');
                 } else {
                     return ticketCreated;
                 }

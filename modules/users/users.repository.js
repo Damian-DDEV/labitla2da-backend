@@ -26,7 +26,6 @@ const UsersRepository = {
   },
 
   exisEmail: async (email) => {
-    console.log(email)
     return Model.Users.scope("list").findOne({where: {email: email}})
   },
 

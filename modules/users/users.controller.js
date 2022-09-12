@@ -109,7 +109,6 @@ const usersController = {
 
   refreshToken: async (req, res, next) => {
     const token = req.headers["token"];
-    console.log(token)
     try {
       const refToken = await userCore.refresh(token);
       if (!refToken) {

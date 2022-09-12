@@ -90,7 +90,6 @@ const userCore = {
   },
 
   refresh: async (token) => {
-    console.log('TOKEN',token)
     const verifyToken = jwt.verify(token, AuthJWT.refresh);
     const { id_user } = verifyToken;
     const getUser = await UsersRepository.refresh(id_user);
