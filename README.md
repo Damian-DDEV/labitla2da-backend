@@ -1,0 +1,14 @@
+- Para poder inicializar el proyecto primero utilize npm i, con esto instalará el módulo de node.
+
+- En caso de estar en un entorno de desarrollo, cambiar a la rama dev, con el comando git switch.
+
+- Una vez ubicado en la rama corremos el comando npm run dev, este comando nos permitirá correr nuestro proyecto en un ambiente de desarrollo.
+
+- Si se desea migrar una base de datos, se puede utilizar el comando npm run migrate:up. Con esto creara todas las tablas del proyecto según los modelos creados.
+  (es preciso contar con mysql).
+
+- En caso de necesitar datos ficticios en la base de datos utilice el comando npm run seeds. Esto permitira al ORM Sequelize generar datos en las tablas 
+  de la base de datos.
+  
+- Por ultimo si necesita una documentación de la api puede acceder al siguiente link:
+  https://documenter.getpostman.com/view/18428292/2s7YYpd4qy
