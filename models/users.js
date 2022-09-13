@@ -75,7 +75,6 @@ module.exports = (sequelize, DataTypes) => {
         msg: "The email is already in use"
       },
       validate: {
-        isEmail: true,
         notEmpty: {
           msg: "The email field cannot be empty."
         },
