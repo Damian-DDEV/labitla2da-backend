@@ -161,6 +161,8 @@ const ticketsCore = {
                       <div class="" style="margin-top: 32px;">
                         <span>Fecha y hora</span>
                         <h2>${date} ${time}</h2>
+                        <span>Sala</span>
+                        <h2>${showEdited.theaters.name}</h2>
                       </div>
                     </div>
                   </div>
