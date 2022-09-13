@@ -3,7 +3,7 @@
 module.exports = {
   async up(queryInterface, Sequelize) {
     await queryInterface.bulkInsert(
-      "movies",
+      "Movies",
       [
         {
           name: "The Lord of the Rings: The Return of the King",

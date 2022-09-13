@@ -1,7 +1,7 @@
 "use strict";
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable("movies", {
+    await queryInterface.createTable("Movies", {
       id: {
         type: Sequelize.INTEGER,
         primaryKey: true,
