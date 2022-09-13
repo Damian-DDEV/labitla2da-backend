@@ -1,4 +1,4 @@
- API TP LA SEGUNDA. IMPORTANTE (UTILIZAR LA RAMA DEV)
+ API TP LA SEGUNDA. IMPORTANTE EN CASO DE QUERER TESTEAR CON POSTMAN (UTILIZAR LA RAMA DEV)
  
 - Para poder inicializar el proyecto primero utilize npm i, con esto instalará el módulo de node.
 
