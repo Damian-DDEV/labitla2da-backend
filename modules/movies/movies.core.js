@@ -8,6 +8,7 @@ const moviesCore = {
     // Recorro las imagenes para setearle el path segun corresponda el enviroment
     movies.forEach(movie => {
       movie.path_img = enviroment + movie.path_img;
+      movie.path_img_banner = enviroment + movie.path_img_banner;
     });
     return movies;
   },

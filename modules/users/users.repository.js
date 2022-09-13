@@ -36,8 +36,8 @@ const UsersRepository = {
   },
 
   savenewPass: async (passnidnew) => {
-    const { id } = passnidnew;
-    const existUser = await Model.Users.findOne({ where: { id:id } });
+    const  id  = passnidnew;
+    const existUser = await Model.Users.findOne({ where: { id } });
     if (existUser) await Model.Users.update({password: passnidnew.passnew},{where: id });
   },
 
